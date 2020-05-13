@@ -34,6 +34,18 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import fr.insalyon.dasi.ihm.web.action.Action;
+import fr.insalyon.dasi.ihm.web.action.AuthentifierClientAction;
+import fr.insalyon.dasi.ihm.web.serialisation.ProfilClientSerialisation;
+import fr.insalyon.dasi.ihm.web.serialisation.Serialisation;
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 /**
  *
  * @author Yumahey
@@ -41,6 +53,18 @@ import javax.persistence.Persistence;
 @WebServlet(name = "MainController", urlPatterns = {"/MainController"})
 public class MainController extends HttpServlet {
 
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        JpaUtil.init();
+    }
+
+    @Override
+    public void destroy() {
+        JpaUtil.destroy();
+        super.destroy();
+    }
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -52,48 +76,32 @@ public class MainController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        System.out.println("bonjour je fais une reponse a la requete");
-        try ( PrintWriter out = response.getWriter()) 
-            {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet MainController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet MainController at " + request.getContextPath() + "</h1>");
-            
-            out.println("<h1>");
-            //Main.init();
-            JpaUtil.init();
-            System.out.println("Bonjour la console");
-            out.println("Bonjour la page web<br/>");
-            
-            //Main.testerInscriptionSpirites();
-            Service service = new Service();
-            List<Medium> listeMediums = service.listerMediums();
-            if (listeMediums != null) {
-                out.println("taille de la liste : " + listeMediums.size());
-                for (Medium medium : listeMediums) {
-                    out.println(medium);
-                }
+        
+        HttpSession session = request.getSession(true);
+        request.setCharacterEncoding("UTF-8");
+
+        String todo = request.getParameter("todo");
+
+        Action action = null;
+        Serialisation serialisation = null;
+
+        if (todo != null) {
+            switch (todo) {
+                case "connecter":
+                    action = new AuthentifierClientAction();
+                    serialisation = new ProfilClientSerialisation();
+                    break;
+                case "...":
+                    break;
             }
-            else {
-                out.println("=> ERREUR...");
-            }
-            JpaUtil.destroy();
-            //Main.testerInscriptionSpirites();
-            //Main.testerListeMediums();
-            out.println("ca marshe ou pah ?");
-            out.println("</h1>");
-            
-            out.println("</body>");
-            out.println("</html>");
-        } catch (Exception e){
-            System.out.println(e);
-            e.printStackTrace();
+        }
+        
+        if (action != null) {
+            action.executer(request);
+            serialisation.serialiser(request, response);
+        }
+        else {
+            response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Erreur dans les paramètres de la requête");
         }
     }
 
