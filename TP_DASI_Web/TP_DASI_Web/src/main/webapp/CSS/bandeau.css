@@ -7,8 +7,19 @@ and open the template in the editor.
     Created on : 13 mai 2020, 16:49:10
     Author     : Yumahey
 */
+
+/* palette */
+:root{  
+    
+    --chestnut: rgba(140, 74, 63, 1);
+    --raisin_black: rgba(38, 35, 34, 1);
+    --dark_sienna: rgba(70, 18, 32, 1);
+    --english_red: rgba(178, 58, 72, 1);
+    --melon: rgba(252, 185, 178, 1);
+}
+
 #menu {
-    background-color: black;
+    background-color: var(--raisin_black);
     position: fixed;
     right: 0;
     top: 0;

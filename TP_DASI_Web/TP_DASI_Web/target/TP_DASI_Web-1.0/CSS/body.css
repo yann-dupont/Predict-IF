@@ -8,8 +8,20 @@ and open the template in the editor.
     Author     : emman
 */
 
+/* palette */
+:root{  
+    
+    --chestnut: rgba(140, 74, 63, 1);
+    --raisin_black: rgba(38, 35, 34, 1);
+    --dark_sienna: rgba(70, 18, 32, 1);
+    --english_red: rgba(178, 58, 72, 1);
+    --melon: rgba(252, 185, 178, 1);
+}
+
 body{
-    background-color: 	rgb(209, 213, 224);
+    /*background-color: rgb(209, 213, 224);*/
+    background-color: var(--english_red);
+    color: var(--raisin_black);
     /*background-image: url("../Images/papier_peint.jpg");
     background-repeat: repeat;*/
 }
@@ -20,9 +32,17 @@ body{
 
 #tableMediums{
     font-family: "Comic Sans MS", cursive, sans-serif;
-    width: 80%;
+    
 }
 
 #tableMediums td{
     padding : 20px;
+}
+
+#tableMediums tr:nth-child(even) {
+  background-color: var(--melon);
+}
+
+#tableMediums tr:nth-child(odd) {
+  background-color: var(--chestnut);
 }

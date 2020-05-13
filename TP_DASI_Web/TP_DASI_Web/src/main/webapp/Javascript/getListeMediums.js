@@ -47,6 +47,7 @@ $(document)
                 htmlContent += "<tr>";
                 htmlContent += "<td>"+medium.denom+"</td>";
                 htmlContent += "<td>"+medium.presentation+"</td>";
+                htmlContent += "<td><a href='contactMedium.html?id="+ medium.id +"'>Contacter</a></td>";
                 htmlContent += "</tr>";
             }
             

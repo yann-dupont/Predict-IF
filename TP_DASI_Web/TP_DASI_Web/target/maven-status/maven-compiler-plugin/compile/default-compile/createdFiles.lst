@@ -1,7 +1,9 @@
 fr\insalyon\dasi\ihm\web\serialisation\GetListeMediumsSerialisation.class
 fr\insalyon\dasi\ihm\web\action\AuthentifierClientAction.class
+fr\insalyon\dasi\ihm\web\serialisation\MediumSerialisation.class
 fr\insalyon\dasi\ihm\web\serialisation\Serialisation.class
 fr\insalyon\dasi\ihm\web\action\Action.class
 fr\insalyon\dasi\ihm\web\action\GetListeMediumsAction.class
 fr\insalyon\dasi\tp_dasi_web\MainController.class
 fr\insalyon\dasi\ihm\web\serialisation\ProfilClientSerialisation.class
+fr\insalyon\dasi\ihm\web\action\GetMediumByIdAction.class
