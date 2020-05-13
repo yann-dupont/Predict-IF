@@ -5,37 +5,12 @@
  */
 package fr.insalyon.dasi.tp_dasi_web;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import fr.insalyon.dasi.ihm.console.Main;
 import fr.insalyon.dasi.dao.JpaUtil;
-import static fr.insalyon.dasi.ihm.console.Main.testerInscriptionSpirites;
-import fr.insalyon.dasi.metier.modele.Client;
-import fr.insalyon.dasi.metier.modele.Employe;
-import fr.insalyon.dasi.metier.modele.Genre;
-import fr.insalyon.dasi.metier.modele.Medium;
-import fr.insalyon.dasi.metier.modele.Spirite;
-import fr.insalyon.dasi.metier.modele.Cartomancien;
-import fr.insalyon.dasi.metier.modele.Astrologue;
-import fr.insalyon.dasi.metier.modele.Consultation;
-import fr.insalyon.dasi.metier.modele.ProfilAstral;
-import fr.insalyon.dasi.metier.service.Service;
-import fr.insalyon.dasi.util.AstroTest;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import fr.insalyon.dasi.ihm.web.action.Action;
 import fr.insalyon.dasi.ihm.web.action.AuthentifierClientAction;
+import fr.insalyon.dasi.ihm.web.action.GetListeMediumsAction;
+import fr.insalyon.dasi.ihm.web.serialisation.GetListeMediumsSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.Serialisation;
 import java.io.IOException;
@@ -90,6 +65,11 @@ public class MainController extends HttpServlet {
                 case "connecter":
                     action = new AuthentifierClientAction();
                     serialisation = new ProfilClientSerialisation();
+                    break;
+                case "getListeMediums":
+                    System.out.println("getListeMediums (Mein Kontrollherr Muller)");
+                    action = new GetListeMediumsAction();
+                    serialisation = new GetListeMediumsSerialisation();
                     break;
                 case "...":
                     break;
