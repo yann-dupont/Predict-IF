@@ -39,18 +39,20 @@ $(document)
             
             console.log("GG WP Json bien recu");
             
-            var htmlContent = "<table id='listeMediums'>";
+            var htmlContent = "<table id='tableMediums'>";
             
             for (var i = 0; i < response.liste.length; i++){
                 
                 var medium = response.liste[i];
                 htmlContent += "<tr>";
-                htmlContent += "<td>"+medium.denom+"</td><td>"+medium.presentation+"</td></tr>";
+                htmlContent += "<td>"+medium.denom+"</td>";
+                htmlContent += "<td>"+medium.presentation+"</td>";
+                htmlContent += "</tr>";
             }
             
             htmlContent += "</table>";
             
-            document.getElementById("listeMediums").innerHTML = htmlContent;
+            document.getElementById("listeMediums").innerHTML += htmlContent;
     
         }
         else {
