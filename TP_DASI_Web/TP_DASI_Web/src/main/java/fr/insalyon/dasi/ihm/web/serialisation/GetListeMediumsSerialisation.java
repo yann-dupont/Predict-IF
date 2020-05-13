@@ -41,6 +41,8 @@ public class GetListeMediumsSerialisation extends Serialisation {
                 jsonMedium.addProperty("id", mediumTemp.getId());
                 jsonMedium.addProperty("denom", mediumTemp.getDenom());
                 jsonMedium.addProperty("presentation", mediumTemp.getPresentation());
+                
+                // normalement pas nécessaire
                 //jsonMedium.addProperty("genre", mediumTemp.getGenre());
                 //jsonMedium.addProperty("statut", mediumTemp.getStatut());
                 
