@@ -32,8 +32,8 @@ public class Main {
         JpaUtil.init();
 
         // Clients
-        /*initialiserClients();            // Question 3
-        testerInscriptionClient();       // Question 4 & 5
+        initialiserClients();            // Question 3
+        /*testerInscriptionClient();       // Question 4 & 5
         testerInscriptionClientAvecDate();
         testerRechercheClient();         // Question 6
         testerListeClients();            // Question 7
@@ -42,7 +42,7 @@ public class Main {
         //saisirRechercheClient();
         
         // Employes
-        //initialiserEmployes();
+        initialiserEmployes();
         /*testerInscriptionEmployes();
         testerRechercheEmploye();
         testerListeEmployes();
@@ -50,10 +50,10 @@ public class Main {
         
         // Mediums
         testerInscriptionSpirites();
-        /*testerInscriptionCartomanciens();
+        testerInscriptionCartomanciens();
         testerInscriptionAstrologues();
         testerRechercheMedium();
-        testerRechercheMediumParDenom();*/
+        testerRechercheMediumParDenom();
         testerListeMediums();
         
         
@@ -62,9 +62,9 @@ public class Main {
         testerPrediction();*/
         
         // Consultation
-        //testerCreationConsultation();
-        //testerObtenirCommentairesClient();
-        //testerContacterMedium();
+        testerCreationConsultation();
+        testerObtenirCommentairesClient();
+        testerContacterMedium();
 
         JpaUtil.destroy();
     }

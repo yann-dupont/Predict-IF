@@ -18,7 +18,7 @@ import fr.insalyon.dasi.metier.modele.Statut;
  * @author Yumahey
  */
 @Entity
-@Inheritance (strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance (strategy = InheritanceType.JOINED)
 public abstract class Medium {
     
     @Id
