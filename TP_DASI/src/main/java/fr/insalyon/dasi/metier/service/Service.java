@@ -82,10 +82,6 @@ public class Service {
         try {
             // Recherche du client
             Client client = clientDao.chercherParMail(mail);
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-            System.out.println(mail);
-            System.out.println(motDePasse);
-            System.out.println(client);
             if (client != null) {
                 // Vérification du mot de passe
                 if (client.getMotDePasse().equals(motDePasse)) {

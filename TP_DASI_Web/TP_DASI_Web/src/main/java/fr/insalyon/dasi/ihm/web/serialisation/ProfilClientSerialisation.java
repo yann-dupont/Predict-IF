@@ -24,7 +24,6 @@ public class ProfilClientSerialisation extends Serialisation {
 
         Boolean connexion = (client != null);
         container.addProperty("connexion", connexion);
-        System.out.println(connexion);
 
         if (client != null) {
             JsonObject jsonClient = new JsonObject();

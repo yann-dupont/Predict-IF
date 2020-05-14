@@ -24,7 +24,6 @@ public class ProfilEmployeSerialisation extends Serialisation {
 
         Boolean connexion = (employe != null);
         container.addProperty("connexion", connexion);
-        System.out.println(connexion);
 
         if (employe != null) {
             JsonObject jsonEmploye = new JsonObject();
