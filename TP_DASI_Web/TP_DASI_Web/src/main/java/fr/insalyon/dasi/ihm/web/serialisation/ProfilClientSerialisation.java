@@ -24,6 +24,7 @@ public class ProfilClientSerialisation extends Serialisation {
 
         Boolean connexion = (client != null);
         container.addProperty("connexion", connexion);
+        System.out.println(connexion);
 
         if (client != null) {
             JsonObject jsonClient = new JsonObject();
@@ -31,6 +32,8 @@ public class ProfilClientSerialisation extends Serialisation {
             jsonClient.addProperty("nom", client.getNom());
             jsonClient.addProperty("prenom", client.getPrenom());
             jsonClient.addProperty("mail", client.getMail());
+            jsonClient.addProperty("dateNaissance", client.getDateNaissance().toString());
+            jsonClient.addProperty("profilID", client.getProfil().toString());
 
             container.add("client", jsonClient);
         }

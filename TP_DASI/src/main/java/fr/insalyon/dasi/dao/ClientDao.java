@@ -26,6 +26,7 @@ public class ClientDao {
         TypedQuery<Client> query = em.createQuery("SELECT c FROM Client c WHERE c.mail = :mail", Client.class);
         query.setParameter("mail", clientMail); // correspond au paramètre ":mail" dans la requête
         List<Client> clients = query.getResultList();
+        System.out.println(clients);
         Client result = null;
         if (!clients.isEmpty()) {
             result = clients.get(0); // premier de la liste

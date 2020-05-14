@@ -9,11 +9,13 @@ import fr.insalyon.dasi.dao.JpaUtil;
 
 import fr.insalyon.dasi.ihm.web.action.Action;
 import fr.insalyon.dasi.ihm.web.action.AuthentifierClientAction;
+import fr.insalyon.dasi.ihm.web.action.AuthentifierEmployeAction;
 import fr.insalyon.dasi.ihm.web.action.GetListeMediumsAction;
 import fr.insalyon.dasi.ihm.web.action.GetMediumByIdAction;
 import fr.insalyon.dasi.ihm.web.serialisation.GetListeMediumsSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.MediumSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilClientSerialisation;
+import fr.insalyon.dasi.ihm.web.serialisation.ProfilEmployeSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.Serialisation;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -64,9 +66,13 @@ public class MainController extends HttpServlet {
 
         if (todo != null) {
             switch (todo) {
-                case "connecter":
+                case "connecterClient":
                     action = new AuthentifierClientAction();
                     serialisation = new ProfilClientSerialisation();
+                    break;
+                case "connecterEmploye":
+                    action = new AuthentifierEmployeAction();
+                    serialisation = new ProfilEmployeSerialisation();
                     break;
                 case "getListeMediums":
                     System.out.println("getListeMediums (Mein Kontrollherr Muller)");

@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 public class Employe extends Utilisateur implements Serializable {
 
     private Genre genre;
-    protected Statut statut;
+    private Statut statut;
     
     protected Employe() {
     }
@@ -33,6 +33,14 @@ public class Employe extends Utilisateur implements Serializable {
     
     public void setGenre(Genre genre){
         this.genre = genre;
+    }
+
+    public Statut getStatut(){
+        return this.statut;
+    }
+    
+    public void setStatut(Statut statut){
+        this.statut = statut;
     }
 
     @Override
