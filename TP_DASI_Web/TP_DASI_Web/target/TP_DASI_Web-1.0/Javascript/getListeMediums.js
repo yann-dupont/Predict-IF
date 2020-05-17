@@ -47,13 +47,16 @@ $(document)
                 htmlContent += "<tr>";
                 htmlContent += "<td>"+medium.denom+"</td>";
                 htmlContent += "<td>"+medium.presentation+"</td>";
-                htmlContent += "<td><a href='contactMedium.html?id="+ medium.id +"'>Contacter</a></td>";
+                // htmlContent += "<td><a href='contactMedium.html?id="+ medium.id +"'>Contacter</a></td>";
+                htmlContent += "<td><a onclick='contacterMedium("+ medium.id +")'>Contacter</a></td>";
                 htmlContent += "</tr>";
             }
             
             htmlContent += "</table>";
             
             document.getElementById("listeMediums").innerHTML += htmlContent;
+
+            document.getElementById("chargement").innerHTML = "";
     
         }
         else {
@@ -69,4 +72,48 @@ $(document)
     .always( function () { // Fonction toujours appelée
 
     });
-})
+});
+
+function contacterMedium(id){
+    
+    if(confirm("Contacter ce médium ?")){
+        console.log("Validation contact");
+        
+        // Appel AJAX
+        $.ajax({
+            
+            url: './MainController',
+            method: 'GET',
+            data: {
+                todo: 'contacterMedium',
+                id: id
+            },
+            dataType: 'json'
+        })
+        .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+            console.log("Done");
+            console.log("Appel AJAX pour contacter le medium réussi");
+            console.log('Response',response); // LOG dans Console Javascript
+            
+            if(response.success){
+                console.log("Youpi le medium a été contacté");
+                window.location = response.url;
+            }else{
+                alert("Désolé, ce medium n'est pas disponible pour le moment...\nRetentez votre chance plus tard !");
+            }
+        
+        })
+        .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+            console.log('Error',error); // LOG dans Console Javascript
+            alert("Erreur lors de l'appel AJAX de contacterMedium");
+        })
+        .always( function () { // Fonction toujours appelée
+            console.log("Always");
+        });
+        
+    }else{
+        console.log("Annulé");
+    }
+}
+
+

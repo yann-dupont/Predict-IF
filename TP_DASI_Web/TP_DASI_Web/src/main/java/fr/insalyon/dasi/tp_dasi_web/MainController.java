@@ -10,8 +10,10 @@ import fr.insalyon.dasi.dao.JpaUtil;
 import fr.insalyon.dasi.ihm.web.action.Action;
 import fr.insalyon.dasi.ihm.web.action.AuthentifierClientAction;
 import fr.insalyon.dasi.ihm.web.action.AuthentifierEmployeAction;
+import fr.insalyon.dasi.ihm.web.action.ContacterMediumAction;
 import fr.insalyon.dasi.ihm.web.action.GetListeMediumsAction;
 import fr.insalyon.dasi.ihm.web.action.GetMediumByIdAction;
+import fr.insalyon.dasi.ihm.web.serialisation.ConfirmationContactSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.GetListeMediumsSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.MediumSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilClientSerialisation;
@@ -84,7 +86,10 @@ public class MainController extends HttpServlet {
                     action = new GetMediumByIdAction();
                     serialisation = new MediumSerialisation();
                     break;
-                case "...":
+                case "contacterMedium":
+                    System.out.println("contacterMedium (controleur)");
+                    action = new ContacterMediumAction();
+                    serialisation = new ConfirmationContactSerialisation();
                     break;
             }
         }

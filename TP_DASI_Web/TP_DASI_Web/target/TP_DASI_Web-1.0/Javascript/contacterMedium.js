@@ -30,14 +30,12 @@ function GetURLParameter(sParam)
     }
 }
 
-$(document)
-    
-    .ready(
-        function getListeMediums() {
+
+$(document).ready( function getListeMediums() {
 
     console.log("==========================\n appel à contacterMedium (JS)\n=========================="); // LOG dans Console Javascript
     
-    console.log("ID de la requete : "+"pas encore trouvé");  //
+    console.log("ID de la requete : "+GetURLParameter('id'));  //
     var text = "";
 
     // bail inutile pour vérifier que tout va bien
@@ -55,7 +53,7 @@ $(document)
         method: 'GET',
         data: {
             todo: 'getMediumById',
-            id: GetURLParameter('id')   // à changer
+            id: GetURLParameter('id')
         },
         dataType: 'json'
     })
@@ -90,5 +88,6 @@ $(document)
     .always( function () { // Fonction toujours appelée
 
     });
-})
+}); 
+
 
