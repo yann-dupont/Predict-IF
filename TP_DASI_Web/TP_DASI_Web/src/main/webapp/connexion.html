@@ -53,6 +53,8 @@
                             // Exemple: Connexion de Ada Lovelace (ID 1)
                             var client = response.client;
                             $('#notification').html("Connexion de " + client.prenom + " " + client.nom + " (ID " + client.id + ")");  // Message pour le paragraphe de notification
+                            document.cookie = "user=" + client.id;
+                            window.location = "profilClient.html"
                         }
                         else {
                             $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification

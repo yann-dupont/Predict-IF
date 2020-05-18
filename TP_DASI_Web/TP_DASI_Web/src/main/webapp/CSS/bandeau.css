@@ -32,6 +32,15 @@ and open the template in the editor.
 }
 
 #logo {
-  text-decoration: none;
-  font-family: Times, sans-serif;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    text-decoration: none;
+    font-family: Times, sans-serif;
+}
+
+#userWelcome {
+    position: fixed;
+    top: 30px;
+    left: 40%;
 }

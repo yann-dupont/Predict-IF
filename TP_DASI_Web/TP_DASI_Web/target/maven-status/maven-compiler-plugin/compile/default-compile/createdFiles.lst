@@ -7,5 +7,7 @@ fr\insalyon\dasi\ihm\web\serialisation\ProfilEmployeSerialisation.class
 fr\insalyon\dasi\tp_dasi_web\MainController.class
 fr\insalyon\dasi\ihm\web\serialisation\ProfilClientSerialisation.class
 fr\insalyon\dasi\ihm\web\action\GetMediumByIdAction.class
+fr\insalyon\dasi\ihm\web\action\ContacterMediumAction.class
 fr\insalyon\dasi\ihm\web\action\AuthentifierClientAction.class
 fr\insalyon\dasi\ihm\web\action\AuthentifierEmployeAction.class
+fr\insalyon\dasi\ihm\web\serialisation\ConfirmationContactSerialisation.class
