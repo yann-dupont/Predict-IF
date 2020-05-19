@@ -27,8 +27,31 @@ function GetURLParameter(sParam)
 }
 
 
-
 $(document).ready( function () {
+    
+
+    /*
+     * Bind le bouton enter sur le champ mdp
+     * avec le bouton connexion (source : W3Schools)
+     */
+    // Get the input field
+    var input = document.getElementById("champ-password");
+    console.log(input);
+
+    // Execute a function when the user releases a key on the keyboard
+    input.addEventListener("keyup", function(event) {
+      // Number 13 is the "Enter" key on the keyboard
+      if (event.keyCode === 13) {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        document.getElementById("bouton-connexion").click();
+      }
+    }); 
+
+    /*
+     * Comportement du bouton connexion (ou enter sur champ mdp)
+     */
     $('#bouton-connexion').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
 
         console.log("clic sur le bouton de connexion"); // LOG dans Console Javascript
