@@ -91,6 +91,7 @@ $(document).ready( function () {
                 }else{
                     window.location = redir;
                 }
+                return;
             }
             else {
                 $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
@@ -128,7 +129,7 @@ $(document).ready( function () {
                 var redir = GetURLParameter("prev");
                 console.log("Redir : ", redir);
                 if(redir === null){
-                    window.location = "profilClient.html";  // test -> mettre sur index
+                    window.location = "index.html";
                 }else{
                     window.location = redir;
                 }
