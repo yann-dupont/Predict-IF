@@ -8,41 +8,31 @@
 
 
 $(document)
-    
     .ready(
-        function getListeMediums() {
+        function getProfilClient() {
 
-    console.log("==========================\nclic sur le bouton 'nos mediums', appel à getListeMediums (JS)\n=========================="); // LOG dans Console Javascript
-    var text = "";
-
-    // bail inutile pour vérifier que tout va bien
-    if (navigator.cookieEnabled === true) {
-        text = "Cookies are enabled.";
-    } else {
-        text = "Cookies are not enabled.";
-    }
-    document.getElementById("demo").innerHTML = text;
-
+    console.log("==========================\nchargement profil client : getProfilClient (JS)\n=========================="); // LOG dans Console Javascript
 
     // Appel AJAX
     $.ajax({
         url: './MainController',
         method: 'GET',
         data: {
-            todo: 'getListeMediums'
+            todo: 'getProfilClient',
+            userId: getCookie("user")
         },
         dataType: 'json'
     })
     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
         console.log('Response',response); // LOG dans Console Javascript
         if (response.success) {
-            
+
             console.log("GG WP Json bien recu");
-            
+
             var htmlContent = "<table id='tableMediums'>";
-            
+
             for (var i = 0; i < response.liste.length; i++){
-                
+
                 var medium = response.liste[i];
                 htmlContent += "<tr>";
                 htmlContent += "<td>"+medium.denom+"</td>";
@@ -51,16 +41,16 @@ $(document)
                 htmlContent += "<td><a onclick='contacterMedium("+ medium.id +")'>Contacter</a></td>";
                 htmlContent += "</tr>";
             }
-            
+
             htmlContent += "</table>";
-            
+
             document.getElementById("listeMediums").innerHTML += htmlContent;
 
             document.getElementById("chargement").innerHTML = "";
-    
+
         }
         else {
-            
+
             document.getElementById("listeMediums").innerHTML = "Erreur... :(";
             $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
         }
