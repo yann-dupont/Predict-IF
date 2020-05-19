@@ -29,29 +29,29 @@ $(document)
 
             console.log("GG WP Json bien recu");
 
-            var htmlContent = "<table id='tableMediums'>";
+            var htmlContent = "<table id='tableConsults'>";
 
-            for (var i = 0; i < response.liste.length; i++){
+            for (var i = 0; i < response.consultations.length; i++){
 
-                var medium = response.liste[i];
+                var consult = response.consultations[i];
                 htmlContent += "<tr>";
-                htmlContent += "<td>"+medium.denom+"</td>";
-                htmlContent += "<td class='presentation'>"+medium.presentation+"</td>";
+                htmlContent += "<td>"+consult.mediumNom+"</td>";
+                htmlContent += "<td class='presentation'>"+consult.date+"</td>";
                 // htmlContent += "<td><a href='contactMedium.html?id="+ medium.id +"'>Contacter</a></td>";
-                htmlContent += "<td><a onclick='contacterMedium("+ medium.id +")'>Contacter</a></td>";
+                htmlContent += "<td><a onclick='contacterMedium("+ consult.mediumId +")'>Contacter</a></td>";
                 htmlContent += "</tr>";
             }
 
             htmlContent += "</table>";
 
-            document.getElementById("listeMediums").innerHTML += htmlContent;
+            document.getElementById("listeConsults").innerHTML += htmlContent;
 
-            document.getElementById("chargement").innerHTML = "";
+            //document.getElementById("chargement").innerHTML = "";
 
         }
         else {
 
-            document.getElementById("listeMediums").innerHTML = "Erreur... :(";
+            document.getElementById("listeConsults").innerHTML = "Erreur... :(";
             $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
         }
     })

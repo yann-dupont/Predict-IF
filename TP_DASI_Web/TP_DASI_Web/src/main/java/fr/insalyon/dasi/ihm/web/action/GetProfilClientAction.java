@@ -27,13 +27,9 @@ public class GetProfilClientAction extends Action {
         
         System.out.println("client : " + client);
         System.out.println("consults : " + consults);
-        
-        
-        
-        List<Medium> mediums = service.listerMediums();
 
-        request.setAttribute("mediums", mediums);
+        request.setAttribute("client", client);
+        request.setAttribute("consults", consults);
         
     }
-    
 }
