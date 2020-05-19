@@ -23,7 +23,14 @@ $(document).ready(
         // il y a utilisateur connecté dans une session
         document.getElementById("menu").innerHTML += "<div id=userWelcome style='color:White;font-size:200%;' >ID de l'utilisateur : " + userId + "</div>";
         document.getElementById("menu").innerHTML += "<a id=boutonBandeau1 class=bouton style='font-size:200%;' href='profilClient.html' title='Accéder à mon profil (informations, profil astral, historique, ...)'>Profil</a>";
-        document.getElementById("menu").innerHTML += "<a id=boutonBandeau2 class=bouton style='font-size:200%;' href='deco.html' title='Se déconnecter de mon compte'>Déconnexion</a>";
+        document.getElementById("menu").innerHTML += "<a id=boutonDeco class=bouton style='font-size:200%;' href='index.html' title='Se déconnecter de mon compte'>Déconnexion</a>";
     }
 });
 
+
+$(document).ready( function () {
+    $('#boutonDeco').on( 'click', function () {
+        document.cookie = "user=";
+        window.location = "index.html";
+    });
+});
