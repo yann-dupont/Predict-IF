@@ -97,7 +97,8 @@ function contacterMedium(id){
                 method: 'GET',
                 data: {
                     todo: 'contacterMedium',
-                    id: id
+                    id: id,
+                    idClient: getCookie("user")
                 },
                 dataType: 'json'
             })
