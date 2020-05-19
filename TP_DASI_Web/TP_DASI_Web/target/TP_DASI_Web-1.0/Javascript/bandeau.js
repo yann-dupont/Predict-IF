@@ -15,9 +15,15 @@ $(document).ready(
     var userId = getCookie("user");
     if(userId==="")
     {
+        // aucune session connectée
         document.getElementById("menu").innerHTML += "<div id=userWelcome style='color:White;font-size:200%;'>Pas connecté :(</div>";
+        document.getElementById("menu").innerHTML += "<a id=boutonBandeau1 class=bouton style='font-size:200%;' href='connexion.html' title='Se connecter'>Connexion</a>";
+        document.getElementById("menu").innerHTML += "<a id=boutonBandeau2 class=bouton style='font-size:200%;' href='inscription.html' title='S&apos;inscrire'>Inscription</a>";
     } else {
-        document.getElementById("menu").innerHTML += "<div id=userWelcome style='color:White;font-size:200%;'>ID de l'utilisateur : " + userId + "</div>";
+        // il y a utilisateur connecté dans une session
+        document.getElementById("menu").innerHTML += "<div id=userWelcome style='color:White;font-size:200%;' >ID de l'utilisateur : " + userId + "</div>";
+        document.getElementById("menu").innerHTML += "<a id=boutonBandeau1 class=bouton style='font-size:200%;' href='profilClient.html' title='Accéder à mon profil (informations, profil astral, historique, ...)'>Profil</a>";
+        document.getElementById("menu").innerHTML += "<a id=boutonBandeau2 class=bouton style='font-size:200%;' href='deco.html' title='Se déconnecter de mon compte'>Déconnexion</a>";
     }
 });
 
