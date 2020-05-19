@@ -74,44 +74,56 @@ $(document)
     });
 });
 
+
+// appelée quand on clique sur "contacter"
 function contacterMedium(id){
     
     if(confirm("Contacter ce médium ?")){
-        console.log("Validation contact");
         
-        // Appel AJAX
-        $.ajax({
-            
-            url: './MainController',
-            method: 'GET',
-            data: {
-                todo: 'contacterMedium',
-                id: id
-            },
-            dataType: 'json'
-        })
-        .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
-            console.log("Done");
-            console.log("Appel AJAX pour contacter le medium réussi");
-            console.log('Response',response); // LOG dans Console Javascript
-            
-            if(response.success){
-                console.log("Youpi le medium a été contacté");
-                window.location = response.url;
-            }else{
-                alert("Désolé, ce medium n'est pas disponible pour le moment...\nRetentez votre chance plus tard !");
-            }
+        var userId = getCookie("user");
+        console.log('ID user : '+userId);
         
-        })
-        .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-            console.log('Error',error); // LOG dans Console Javascript
-            alert("Erreur lors de l'appel AJAX de contacterMedium");
-        })
-        .always( function () { // Fonction toujours appelée
-            console.log("Always");
-        });
-        
-    }else{
+        if(userId==="")
+        {
+            window.location = "connexion.html?prev=listeMediums.html";
+        }else{  // utilisateur connecté
+            // TODO : tester si c'est un employé, si oui refuser
+            console.log("Validation contact");
+
+            // Appel AJAX
+            $.ajax({
+
+                url: './MainController',
+                method: 'GET',
+                data: {
+                    todo: 'contacterMedium',
+                    id: id
+                },
+                dataType: 'json'
+            })
+            .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                console.log("Done");
+                console.log("Appel AJAX pour contacter le medium réussi");
+                console.log('Response',response); // LOG dans Console Javascript
+
+                if(response.success){
+                    console.log("Youpi le medium a été contacté");
+                    window.location = response.url;
+                }else{
+                    alert("Désolé, ce medium n'est pas disponible pour le moment...\nRetentez votre chance plus tard !");
+                }
+
+            })
+            .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                console.log('Error',error); // LOG dans Console Javascript
+                alert("Erreur lors de l'appel AJAX de contacterMedium");
+            })
+            .always( function () { // Fonction toujours appelée
+                console.log("Always");
+            });            
+        }
+
+    }else{      // "annuler" dans la boite de dialogue de confirmation
         console.log("Annulé");
     }
 }

@@ -6,13 +6,14 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>Contacter le medium</title>
+        <title>Medium contacté</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/body.css">
         <!-- Librairie Javascript: jQuery (v3.4.1) -->
         <link rel="stylesheet" type="text/css" href="CSS/bandeau.css">
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="Javascript/gestionCookies.js"></script>
         <script src="Javascript/bandeau.js"></script>
         <script src="Javascript/contacterMedium.js"></script>
     </head>
@@ -20,8 +21,12 @@ and open the template in the editor.
         <header id=menu> </header>
         
         <section id="contenu">
-            <h2>Contacter <span class="nomMedium"></span></h2>
+            <h2>Merci d'avoir contacté <span class="nomMedium"></span> !</h2>
+            <div>Votre demande de consultation avec <span class="nomMedium"></span> a bien été prise en compte.<br/>
+                Le medium vous recontactera bientôt, soyez patients !
+            </div>
             
+            <br/><br/><hr/>
             <div id="test"></div>
         </section>
     </body>
