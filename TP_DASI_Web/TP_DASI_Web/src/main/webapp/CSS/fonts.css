@@ -1,0 +1,20 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 19 mai 2020, 12:37:31
+    Author     : emman
+*/
+
+.presentation{
+    font-family: 'Roboto', Verdana;
+    font-style: italic;
+    /*font-weight: lighter;*/
+}
+
+.calligraphie{
+    font-family: 'EB Garamond', Times New Roman;
+    font-style: italic;
+}
