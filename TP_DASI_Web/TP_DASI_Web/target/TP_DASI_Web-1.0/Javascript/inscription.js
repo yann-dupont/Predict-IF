@@ -85,7 +85,10 @@ $(document).ready( function () {
         .fail( function (xhr, status, error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
 
             console.log(xhr.responseText);
-//            alert("Erreur lors de l'appel AJAX");
+            alert("Erreur lors de l'appel AJAX");
+        })
+        .always(function(){
+            console.log("Always");
         });
 
     });
