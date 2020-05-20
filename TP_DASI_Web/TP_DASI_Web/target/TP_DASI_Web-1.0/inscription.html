@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>S'inscrire</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="CSS/body.css">
+        <link rel="stylesheet" type="text/css" href="CSS/connexion.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="Javascript/inscription.js"></script>
+    </head>
+    <body>        
+        <section id="contenu" class='center'>
+            <div>Todo : faire des règles dans le css pour la tailles des inputs</div>
+            <!--<h2>S'inscrire</h2>-->
+            <form class="no_center">
+                <fieldset>
+                    <legend>S'inscrire</legend>
+                    <label for="nom">Nom :</label><br/> 
+                    <input type="text" id="nom" size="40" required/><br/>
+                    <label for="prenom">Prénom :</label><br/> 
+                    <input type="text" id="prenom" size="40" required/><br/>
+                    <label for="mail">Adresse mail :</label><br/> 
+                    <input type="email" id="mail" size="40" required/><br/>
+                    <label for="tel">N° de téléphone :</label><br/>
+                    <input type="tel" id="tel" size="40" required/><br/>
+                    <label for="ddn">Date de naissance :</label><br/>
+                    <input type="date" id='ddn' size='40' min="1920-01-01" max="2002-12-31" required><br/>
+                    <label for="password">Mot de passe :</label><br/>
+                    <input type="password" id="password" required/><br/>
+                    <!--<button id="bouton-confirmer">Confirmer</button>-->
+                    <input type="submit" value="Confirmer" id="bouton-confirmer">
+                </fieldset>
+            </form>
+        </section>
+    </body>
+</html>
