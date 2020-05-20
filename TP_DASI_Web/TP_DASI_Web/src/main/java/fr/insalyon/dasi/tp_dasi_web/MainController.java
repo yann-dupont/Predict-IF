@@ -14,11 +14,13 @@ import fr.insalyon.dasi.ihm.web.action.ContacterMediumAction;
 import fr.insalyon.dasi.ihm.web.action.GetListeMediumsAction;
 import fr.insalyon.dasi.ihm.web.action.GetProfilClientAction;
 import fr.insalyon.dasi.ihm.web.action.GetMediumByIdAction;
+import fr.insalyon.dasi.ihm.web.action.InscrireClientAction;
 import fr.insalyon.dasi.ihm.web.serialisation.ConfirmationContactSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.GetListeMediumsSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.MediumSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.GetProfilClientSerialisation;
+import fr.insalyon.dasi.ihm.web.serialisation.InscrireClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilEmployeSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.Serialisation;
 import java.io.IOException;
@@ -100,7 +102,8 @@ public class MainController extends HttpServlet {
                     break;
                 case "inscrireClient":
                     System.out.println("inscrireClient (controleur)");
-                    
+                    action = new InscrireClientAction();
+                    serialisation = new InscrireClientSerialisation();
             }
         }
         
