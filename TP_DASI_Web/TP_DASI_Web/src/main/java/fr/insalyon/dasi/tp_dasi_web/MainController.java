@@ -98,6 +98,9 @@ public class MainController extends HttpServlet {
                     action = new GetProfilClientAction();
                     serialisation = new GetProfilClientSerialisation();
                     break;
+                case "inscrireClient":
+                    System.out.println("inscrireClient (controleur)");
+                    
             }
         }
         
