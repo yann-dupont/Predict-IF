@@ -60,7 +60,10 @@ $(document).ready( function () {
         // Récupération de la valeur des champs du formulaire
         var champLogin = $('#champ-login').val();
         var champPassword = $('#champ-password').val();
+        
+        var ok = false;
 
+        // ------------------------------------------------------------
         // Appel AJAX pour la connexion client
         $.ajax({
             url: './MainController',
@@ -91,7 +94,7 @@ $(document).ready( function () {
                 }else{
                     window.location = redir;
                 }
-                return;
+                ok = true;
             }
             else {
                 $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
@@ -105,47 +108,46 @@ $(document).ready( function () {
 
         });
 
+        // ------------------------------------------------------------
         // Appel AJAX pour la connexion employé
-        $.ajax({
-            url: './MainController',
-            method: 'POST',
-            data: {
-                todo: 'connecterEmploye',
-                login: champLogin,
-                password: champPassword
-            },
-            dataType: 'json'
-        })
-        .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
-            console.log('Response',response); // LOG dans Console Javascript
-            if (response.connexion) {
-                //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
-                // TODO: afficher les informations du client dans la notification
-                // Exemple: Connexion de Ada Lovelace (ID 1)
-                var employe = response.employe;
-                $('#notification').html("Connexion de l'employé " + employe.prenom + " " + employe.nom + " (ID " + employe.id + ")");  // Message pour le paragraphe de notification
-                document.cookie = "user=" + employe.id;
-                
-                var redir = GetURLParameter("prev");
-                console.log("Redir : ", redir);
-                if(redir === null){
-                    window.location = "index.html";
-                }else{
-                    window.location = redir;
+        if(!ok){
+            $.ajax({
+                url: './MainController',
+                method: 'POST',
+                data: {
+                    todo: 'connecterEmploye',
+                    login: champLogin,
+                    password: champPassword
+                },
+                dataType: 'json'
+            })
+            .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+                console.log('Response',response); // LOG dans Console Javascript
+                if (response.connexion) {
+                    //$('#notification').html("Connexion OK");  // Message pour le paragraphe de notification
+                    // TODO: afficher les informations du client dans la notification
+                    // Exemple: Connexion de Ada Lovelace (ID 1)
+                    var employe = response.employe;
+                    $('#notification').html("Connexion de l'employé " + employe.prenom + " " + employe.nom + " (ID " + employe.id + ")");  // Message pour le paragraphe de notification
+                    document.cookie = "user=" + employe.id;
+
+                    var redir = GetURLParameter("prev");
+                    console.log("Redir : ", redir);
+                    if(redir === null){
+                        window.location = "index.html";
+                    }else{
+                        window.location = redir;
+                    }
+
                 }
-                
-            }
-            else {
-                $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
-            }
-        })
-        .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-            console.log('Error',error); // LOG dans Console Javascript
-            alert("Erreur lors de l'appel AJAX1");
-        })
-        .always( function () { // Fonction toujours appelée
-
-        });
-
+                else {
+                    $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
+                }
+            })
+            .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+                console.log('Error',error); // LOG dans Console Javascript
+                alert("Erreur lors de l'appel AJAX1");
+            });
+        }
     });
 });

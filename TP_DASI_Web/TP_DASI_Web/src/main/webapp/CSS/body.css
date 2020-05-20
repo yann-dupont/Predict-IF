@@ -26,6 +26,10 @@ body{
     background-repeat: repeat;*/
 }
 
+#contenu{
+    padding: 5%;
+}
+
 #listeMediums{
     margin : 5em;
 }

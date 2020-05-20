@@ -16,8 +16,10 @@ $(document).ready(
     if(userId==="")
     {
         // aucune session connectée
+        var redir = window.location.toString().split('/')
+        redir = redir[redir.length - 1];
         document.getElementById("menu").innerHTML += "<div id=userWelcome style='color:White;font-size:200%;'>Pas connecté :(</div>";
-        document.getElementById("menu").innerHTML += "<a id=boutonBandeau1 class=bouton style='font-size:200%;' href='connexion.html' title='Se connecter'>Connexion</a>";
+        document.getElementById("menu").innerHTML += "<a id=boutonBandeau1 class=bouton style='font-size:200%;' href='connexion.html?prev="+redir+"' title='Se connecter'>Connexion</a>";
         document.getElementById("menu").innerHTML += "<a id=boutonBandeau2 class=bouton style='font-size:200%;' href='inscription.html' title='S&apos;inscrire'>Inscription</a>";
     } else {
         // il y a utilisateur connecté dans une session
