@@ -1,4 +1,5 @@
 fr\insalyon\dasi\ihm\web\serialisation\GetListeMediumsSerialisation.class
+fr\insalyon\dasi\ihm\web\serialisation\InscrireClientSerialisation.class
 fr\insalyon\dasi\ihm\web\serialisation\MediumSerialisation.class
 fr\insalyon\dasi\ihm\web\serialisation\Serialisation.class
 fr\insalyon\dasi\ihm\web\action\Action.class
@@ -9,6 +10,7 @@ fr\insalyon\dasi\ihm\web\action\GetProfilClientAction.class
 fr\insalyon\dasi\ihm\web\serialisation\ProfilClientSerialisation.class
 fr\insalyon\dasi\ihm\web\action\GetMediumByIdAction.class
 fr\insalyon\dasi\ihm\web\action\ContacterMediumAction.class
+fr\insalyon\dasi\ihm\web\action\InscrireClientAction.class
 fr\insalyon\dasi\ihm\web\action\AuthentifierClientAction.class
 fr\insalyon\dasi\ihm\web\serialisation\GetProfilClientSerialisation.class
 fr\insalyon\dasi\ihm\web\action\AuthentifierEmployeAction.class

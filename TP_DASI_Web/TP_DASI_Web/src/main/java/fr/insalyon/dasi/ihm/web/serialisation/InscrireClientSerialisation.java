@@ -25,8 +25,12 @@ public class InscrireClientSerialisation extends Serialisation {
         
         JsonObject container = new JsonObject();
         
-        container.addProperty("success", request.getParameter("success"));
-
+        System.out.println("bonjouuur, success = " + request.getAttribute("success"));
+        container.addProperty("success", (Boolean)request.getAttribute("success"));
+        if((Boolean)request.getAttribute("success")){
+            container.addProperty("userId", (Long)request.getAttribute("userId"));
+        }
+        
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();

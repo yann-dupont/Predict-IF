@@ -31,6 +31,7 @@ public class InscrireClientAction extends Action {
 
         if (res != null) {
             request.setAttribute("success", true);
+            request.setAttribute("userId", c.getId());
             System.out.println("Succès InscrireClientAction");
         }
         else {

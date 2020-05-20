@@ -104,6 +104,7 @@ public class MainController extends HttpServlet {
                     System.out.println("inscrireClient (controleur)");
                     action = new InscrireClientAction();
                     serialisation = new InscrireClientSerialisation();
+                    break;
             }
         }
         
