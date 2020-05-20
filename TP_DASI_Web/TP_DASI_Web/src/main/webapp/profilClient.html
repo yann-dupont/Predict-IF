@@ -14,25 +14,55 @@ and open the template in the editor.
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="Javascript/gestionCookies.js"></script>
         <script src="Javascript/bandeau.js"></script>
+        <script src="Javascript/getListeMediums.js"></script>
         <script src="Javascript/getProfilClient.js"></script>
     </head>
     <body>
         <header id=menu> </header>
         <section id="contenu">
             <hr/><br/><br/>
-            <section id="informations">
-                <h2>Mon profil</h2><br/>
+            <span id="chargement">Chargement...</span>
+            <section id="informations" class='partie'>
+                <h2 class='titre' style='font-size:400%;'>Mon profil</h2><br/>
+                <table class='tableInfos' style='font-size:200%;'>
+                    <tr>
+                        <td>Nom</td>
+                        <td id='clientNom'></td>
+                        <td>Téléphone</td>
+                        <td id='clientTel'></td>
+                    </tr>
+                    <tr>
+                        <td>Prénom</td>
+                        <td id='clientPrenom'></td>
+                        <td>Adresse mail</td>
+                        <td id='clientMail'></td>
+                    </tr>
+                </table>
+                <button type='button' id='boutonModifProfil' onclick='modeModif()'>Modifier les informations</button>
             </section>
             
             <hr/><br/><br/>
-            <section id="profilAstral">
-                <h2>Mon profil astral : </h2><br/>
+            <section id="profilAstral" class='partie'>
+                <h2 class='titre' style='font-size:400%;'>Mon profil astral : </h2><br/>
+                <table class='tableInfos' style='font-size:200%;'>
+                    <tr>
+                        <td>Signe du zodiaque</td>
+                        <td id='clientZodiaque'></td>
+                        <td>Couleur porte-bonheur</td>
+                        <td id='clientCouleur'></td>
+                    </tr>
+                    <tr>
+                        <td>Signe du zodiaque chinois</td>
+                        <td id='clientSgChinois'></td>
+                        <td>Animal-totem</td>
+                        <td id='clientAnimal'></td>
+                    </tr>
+                </table>
             </section>
             
             <hr/><br/><br/>
-            <section id="listeConsults">
-                <h2>Mon historique de consultations : </h2><br/>
-                <span id="chargement">Chargement...</span>
+            <section id="listeConsults" class='partie'>
+                <h2 class='titre' style='font-size:400%;'>Mon historique de consultations : </h2><br/>
             </section>
             <br/><br/><hr/><br/><br/>
             <!--div style="font-size:300%;">

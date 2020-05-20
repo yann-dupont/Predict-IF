@@ -29,18 +29,20 @@ $(document)
 
             console.log("GG WP Json bien recu");
 
-            var htmlContent = "<table id='tableInfos'>";
-            htmlContent += "<tr>";
-            htmlContent += "<td>Nom</td>";
-            htmlContent += "<td>"+response.client.nom+"</td>";
-            htmlContent += "<td>Téléphone</td>";
-            htmlContent += "<td>"+response.client.tel+"</td>";
-            htmlContent += "</tr>";
+            // informations principales
+            document.getElementById("clientNom").innerHTML += response.client.nom;
+            document.getElementById("clientTel").innerHTML += response.client.tel;
+            document.getElementById("clientPrenom").innerHTML += response.client.prenom;
+            document.getElementById("clientMail").innerHTML += response.client.mail;
+
+            // profil astral
+            document.getElementById("clientZodiaque").innerHTML += response.client.zodiaque;
+            document.getElementById("clientCouleur").innerHTML += response.client.couleur;
+            document.getElementById("clientSgChinois").innerHTML += response.client.sgChinois;
+            document.getElementById("clientAnimal").innerHTML += response.client.animal;
             
-            htmlContent += "<div class='gauche'>" + response.client.nom + "<div/>";
-            document.getElementById("informations").innerHTML += htmlContent;
-            
-            htmlContent = "<table id='tableConsults'>";
+            // historique
+            var htmlContent = "<table id='tableConsults' style='font-size:200%;'>";
             for (var i = 0; i < response.consultations.length; i++){
 
                 var consult = response.consultations[i];
@@ -74,4 +76,15 @@ $(document)
     });
 });
 
+// appelée quand on clique sur le bouton "modifier le profil"
+function modeModif(){
+    document.getElementById("boutonModifProfil").innerHTML = "Valider les modifications";
+    document.getElementById("boutonModifProfil").setAttribute("onClick", "validerModif()");
+}
+
+// appelée quand on clique sur le bouton "valider les modifications"
+function validerModif(){
+    document.getElementById("boutonModifProfil").innerHTML = "Modifier les informations";
+    document.getElementById("boutonModifProfil").setAttribute("onClick", "modeModif()");
+}
 
