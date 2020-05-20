@@ -17,10 +17,10 @@ and open the template in the editor.
     <body>        
         <section id="contenu" class='center'>
             <div>Todo : faire des règles dans le css pour la tailles des inputs</div>
-            <!--<h2>S'inscrire</h2>-->
+            <h2>S'inscrire</h2>
             <form class="no_center">
                 <fieldset>
-                    <legend>S'inscrire</legend>
+                    <legend>Inscription</legend>
                     <label for="nom">Nom :</label><br/> 
                     <input type="text" id="nom" size="40" required/><br/>
                     <label for="prenom">Prénom :</label><br/> 
@@ -30,13 +30,15 @@ and open the template in the editor.
                     <label for="tel">N° de téléphone :</label><br/>
                     <input type="tel" id="tel" size="40" required/><br/>
                     <label for="ddn">Date de naissance :</label><br/>
-                    <input type="date" id='ddn' size='40' min="1920-01-01" max="2002-12-31" required><br/>
+                    <input type="date" id='ddn' size='40' min="1900-01-01" max="2019-12-31" required><br/>
                     <label for="password">Mot de passe :</label><br/>
                     <input type="password" id="password" required/><br/>
-                    <!--<button id="bouton-confirmer">Confirmer</button>-->
                     <input type="submit" value="Confirmer" id="bouton-confirmer">
                 </fieldset>
             </form>
+            <br/><hr/><br/>
+            <!-- Lien vers l'accueil -->
+            <p><a href="index.html">Retour à la page d'Accueil</a></p>
         </section>
     </body>
 </html>
