@@ -354,6 +354,7 @@ public class Service {
         }
         
         Consultation consult = new Consultation(employe, client, medium);
+        consult.setDateNow();
         
         // persister consult
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DASI-PU");

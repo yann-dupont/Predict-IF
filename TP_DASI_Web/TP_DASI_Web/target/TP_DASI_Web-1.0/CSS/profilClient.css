@@ -1,0 +1,37 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20 mai 2020, 14:25:23
+    Author     : Yumahey
+*/
+
+body{
+    /*background-color: rgb(209, 213, 224);*/
+    background-color: var(--english_red);
+    color: var(--raisin_black);
+    /*background-image: url("../Images/papier_peint.jpg");
+    background-repeat: repeat;*/
+}
+
+#listeConsults{
+    margin : 5em;
+}
+
+#tableConsults{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+#tableConsults td{
+    padding : 20px;
+}
+
+#tableConsults tr:nth-child(even) {
+  background-color: var(--melon);
+}
+
+#tableConsults tr:nth-child(odd) {
+  background-color: var(--chestnut);
+}

@@ -899,6 +899,7 @@ public class Main {
         Consultation consult = new Consultation(camille, ada, eldrad);
         //consult.setDate(2020, 1, 13, 20, 20);
         consult.setDateNow();
+        consult.setCommentaire("Un commentaire.");
         Long idConsult = service.enregistrerConsultation(consult);
         if (idConsult != null) {
             System.out.println("> Succès création consultation");
@@ -1043,6 +1044,8 @@ public class Main {
         Service service = new Service();
         
         Consultation consult = service.contacterMedium(eldrad, ada);
+        consult.setDate(2020, 4, 14, 14, 30);
+        consult.setCommentaire("La consultation s'est bien déroulée.");
         System.out.println("Consultation générée :");
         System.out.println("Employé :");
         System.out.println(consult.getEmploye());

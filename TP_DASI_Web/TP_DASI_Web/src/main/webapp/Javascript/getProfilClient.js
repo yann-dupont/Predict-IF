@@ -29,8 +29,18 @@ $(document)
 
             console.log("GG WP Json bien recu");
 
-            var htmlContent = "<table id='tableConsults'>";
-
+            var htmlContent = "<table id='tableInfos'>";
+            htmlContent += "<tr>";
+            htmlContent += "<td>Nom</td>";
+            htmlContent += "<td>"+response.client.nom+"</td>";
+            htmlContent += "<td>Téléphone</td>";
+            htmlContent += "<td>"+response.client.tel+"</td>";
+            htmlContent += "</tr>";
+            
+            htmlContent += "<div class='gauche'>" + response.client.nom + "<div/>";
+            document.getElementById("informations").innerHTML += htmlContent;
+            
+            htmlContent = "<table id='tableConsults'>";
             for (var i = 0; i < response.consultations.length; i++){
 
                 var consult = response.consultations[i];
@@ -46,7 +56,7 @@ $(document)
 
             document.getElementById("listeConsults").innerHTML += htmlContent;
 
-            //document.getElementById("chargement").innerHTML = "";
+            document.getElementById("chargement").innerHTML = "";
 
         }
         else {

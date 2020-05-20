@@ -38,6 +38,7 @@ public class GetProfilClientSerialisation extends Serialisation {
             jsonClient.addProperty("nom", client.getNom());
             jsonClient.addProperty("prenom", client.getPrenom());
             jsonClient.addProperty("mail", client.getMail());
+            jsonClient.addProperty("tel", client.getTel());
             jsonClient.addProperty("dateNaissance", client.getDateNaissance().toString());
             ProfilAstral profil = client.getProfil();
             jsonClient.addProperty("couleur", profil.getCouleur());
