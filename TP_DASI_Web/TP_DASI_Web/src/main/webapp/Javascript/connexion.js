@@ -125,7 +125,7 @@ $(document).ready( function () {
                     // TODO: afficher les informations du client dans la notification
                     // Exemple: Connexion de Ada Lovelace (ID 1)
                     var employe = response.employe;
-                    $('#notification').html("Connexion de l'employé " + employe.prenom + " " + employe.nom + " (ID " + employe.id + ")");  // Message pour le paragraphe de notification
+                    console.log("Connexion de l'employé " + employe.prenom + " " + employe.nom + " (ID " + employe.id + ")");  // Message pour le paragraphe de notification
                     document.cookie = "user=" + employe.id;
 
                     var redir = GetURLParameter("prev");
