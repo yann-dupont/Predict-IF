@@ -25,7 +25,7 @@ public class ConfirmationContactSerialisation extends Serialisation {
         container.addProperty("success", (Boolean)request.getAttribute("success"));
         
         if((Boolean)request.getAttribute("success")){       // medium dispo
-            container.addProperty("url", "contactMedium.html?id="+request.getParameter("id"));
+            container.addProperty("url", "confirmationContact.html?id="+request.getParameter("id"));
         }else{
             container.addProperty("cause", (String)request.getAttribute("cause"));
         }

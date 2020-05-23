@@ -31,9 +31,9 @@ function GetURLParameter(sParam)
 }
 
 
-$(document).ready( function getListeMediums() {
+$(document).ready( function nomMedium() {
 
-    console.log("==========================\n appel à contacterMedium (JS)\n=========================="); // LOG dans Console Javascript
+    console.log("==========================\n appel à nomMedium (JS)\n=========================="); // LOG dans Console Javascript
     
     console.log("ID de la requete : "+GetURLParameter('id'));  //
     var text = "";
@@ -73,20 +73,14 @@ $(document).ready( function getListeMediums() {
                 tag.innerHTML = response.medium.denom;
             }
             
-    
         }
         else {
-            
-            //document.getElementById("listeMediums").innerHTML = "Erreur... :(";
-            $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
+            alert("erreur du côté serveur pour nomMedium");
         }
     })
     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-        console.log('Error',error); // LOG dans Console Javascript
-        alert("Erreur lors de l'appel AJAX de contacterMedium");
-    })
-    .always( function () { // Fonction toujours appelée
-
+        console.log('Erreur ajax nomMedium',error); // LOG dans Console Javascript
+        alert("Erreur lors de l'appel AJAX de nomMedium");
     });
 }); 
 

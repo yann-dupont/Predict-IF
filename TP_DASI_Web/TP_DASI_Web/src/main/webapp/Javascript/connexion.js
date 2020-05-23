@@ -101,11 +101,8 @@ $(document).ready( function () {
             }
         })
         .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-            console.log('Error',error); // LOG dans Console Javascript
-            alert("Erreur lors de l'appel AJAX");
-        })
-        .always( function () { // Fonction toujours appelée
-
+            console.log('Erreur connexion en tant que client',error); // LOG dans Console Javascript
+//            alert("Erreur lors de l'appel AJAX pour la connexion client");
         });
 
         // ------------------------------------------------------------
@@ -134,19 +131,19 @@ $(document).ready( function () {
                     var redir = GetURLParameter("prev");
                     console.log("Redir : ", redir);
                     if(redir === null){
-                        window.location = "index.html";
+                        window.location = "employe.html";
                     }else{
                         window.location = redir;
                     }
 
                 }
                 else {
-                    $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
+                    console.log("Erreur de connexion");
                 }
             })
             .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-                console.log('Error',error); // LOG dans Console Javascript
-                alert("Erreur lors de l'appel AJAX1");
+                console.log('Erreur de connexion',error); // LOG dans Console Javascript
+                alert("Erreur lors de l'appel AJAX employe");
             });
         }
     });

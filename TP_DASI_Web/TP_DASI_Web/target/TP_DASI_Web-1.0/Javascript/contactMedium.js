@@ -47,9 +47,6 @@ function contacterMedium(id){
             .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
                 console.log('Error',error); // LOG dans Console Javascript
                 alert("Erreur lors de l'appel AJAX de contacterMedium");
-            })
-            .always( function () { // Fonction toujours appelée
-                console.log("Always");
             });            
         }
 
