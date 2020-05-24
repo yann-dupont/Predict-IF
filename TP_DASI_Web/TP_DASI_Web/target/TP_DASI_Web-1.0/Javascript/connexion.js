@@ -128,13 +128,7 @@ $(document).ready( function () {
                     console.log("Connexion de l'employé " + employe.prenom + " " + employe.nom + " (ID " + employe.id + ")");  // Message pour le paragraphe de notification
                     document.cookie = "user=" + employe.id;
 
-                    var redir = GetURLParameter("prev");
-                    console.log("Redir : ", redir);
-                    if(redir === null){
-                        window.location = "employe.html";
-                    }else{
-                        window.location = redir;
-                    }
+                    window.location = "employe.html";
 
                 }
                 else {
