@@ -16,6 +16,11 @@ public class ClientDao {
         em.persist(client);
     }
     
+    public Client modifier(Client client) {
+        EntityManager em = JpaUtil.obtenirContextePersistance();
+        return em.merge(client);
+    }
+    
     public Client chercherParId(Long clientId) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
         return em.find(Client.class, clientId); // renvoie null si l'identifiant n'existe pas

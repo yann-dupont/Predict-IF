@@ -16,6 +16,7 @@ import fr.insalyon.dasi.ihm.web.action.GetProfilClientAction;
 import fr.insalyon.dasi.ihm.web.action.GetMediumByIdAction;
 import fr.insalyon.dasi.ihm.web.action.InfosEmployeAction;
 import fr.insalyon.dasi.ihm.web.action.InscrireClientAction;
+import fr.insalyon.dasi.ihm.web.action.ModifierProfilClientAction;
 import fr.insalyon.dasi.ihm.web.serialisation.ConfirmationContactSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.GetListeMediumsSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.MediumSerialisation;
@@ -23,6 +24,7 @@ import fr.insalyon.dasi.ihm.web.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.GetProfilClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.InfosEmployeSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.InscrireClientSerialisation;
+import fr.insalyon.dasi.ihm.web.serialisation.ModifierProfilClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilEmployeSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.Serialisation;
 import java.io.IOException;
@@ -101,6 +103,11 @@ public class MainController extends HttpServlet {
                     System.out.println("getProfilClient (controleur)");
                     action = new GetProfilClientAction();
                     serialisation = new GetProfilClientSerialisation();
+                    break;
+                case "modifierProfilClient":
+                    System.out.println("modifierProfilClient (controleur)");
+                    action = new ModifierProfilClientAction();
+                    serialisation = new ModifierProfilClientSerialisation();
                     break;
                 case "inscrireClient":
                     System.out.println("inscrireClient (controleur)");

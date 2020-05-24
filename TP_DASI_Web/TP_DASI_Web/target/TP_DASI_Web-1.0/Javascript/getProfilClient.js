@@ -90,13 +90,17 @@ function modeModif(){
 function validerModif(){
     if(confirm("Valider les modifications ?")){
         document.getElementById("boutonModifProfil").innerHTML = "Modifier les informations";
-        document.getElementById("clientNom").innerHTML = document.getElementById("clientNom").firstChild.value;
-        document.getElementById("clientTel").innerHTML = document.getElementById("clientTel").firstChild.value;
-        document.getElementById("clientPrenom").innerHTML = document.getElementById("clientPrenom").firstChild.value;
-        document.getElementById("clientMail").innerHTML = document.getElementById("clientMail").firstChild.value;
+        var newNom = document.getElementById("clientNom").firstChild.value;
+        var newTel = document.getElementById("clientTel").firstChild.value;
+        var newPrenom = document.getElementById("clientPrenom").firstChild.value;
+        var newMail = document.getElementById("clientMail").firstChild.value;
+        document.getElementById("clientNom").innerHTML = newNom;
+        document.getElementById("clientTel").innerHTML = newTel;
+        document.getElementById("clientPrenom").innerHTML = newPrenom;
+        document.getElementById("clientMail").innerHTML = newMail;
         document.getElementById("boutonModifProfil").setAttribute("onClick", "modeModif()");
         
-        /*var userId = getCookie("user");
+        var userId = getCookie("user");
         console.log('ID user : '+userId);
         
         if(userId==="")
@@ -110,35 +114,37 @@ function validerModif(){
             $.ajax({
 
                 url: './MainController',
-                method: 'GET',
+                method: 'POST',
                 data: {
-                    todo: 'contacterMedium',
-                    id: id,
-                    idClient: getCookie("user")
+                    todo: 'modifierProfilClient',
+                    userId: userId,
+                    newNom: newNom,
+                    newTel: newTel,
+                    newPrenom: newPrenom,
+                    newMail: newMail
                 },
                 dataType: 'json'
             })
             .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
                 console.log("Done");
-                console.log("Appel AJAX pour contacter le medium réussi");
+                console.log("Appel AJAX pour modifier le profil réussi");
                 console.log('Response',response); // LOG dans Console Javascript
 
                 if(response.success){
-                    console.log("Youpi le medium a été contacté");
-                    window.location = response.url;
+                    console.log("Youpi le profil a été modifié");
                 }else{
-                    alert("Désolé, ce medium n'est pas disponible pour le moment...\nRetentez votre chance plus tard !");
+                    alert("Désolé, une erreur est survenue...\nRetentez votre chance plus tard !");
                 }
 
             })
             .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
                 console.log('Error',error); // LOG dans Console Javascript
-                alert("Erreur lors de l'appel AJAX de contacterMedium");
+                alert("Erreur lors de l'appel AJAX de modifierProfil");
             })
             .always( function () { // Fonction toujours appelée
                 console.log("Always");
             });            
-        }*/
+        }
 
     }else{      // "annuler" dans la boite de dialogue de confirmation
         console.log("Annulé");
