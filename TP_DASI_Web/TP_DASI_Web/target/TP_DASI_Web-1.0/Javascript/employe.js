@@ -27,14 +27,27 @@ $(document)
 
             console.log("GG WP Json bien recu");
 
-                for (var tag of document.getElementsByClassName("nomEmploye")){
-                    console.log(tag);
-                    tag.innerHTML = response.prenom;
-                }
+            for (var tag of document.getElementsByClassName("nomEmploye")){
+                console.log(tag);
+                tag.innerHTML = response.prenom;
+            }
+            
+            if(response.a_faire){
+                document.getElementById("a_faire").innerHTML = "Au boulot !";
+            }else{
+                document.getElementById("a_faire").innerHTML = "Chill B-)";
+            }
         }
         else {
 
-            alert("Erreur... :(");
+            if(response.cause === "session expiree"){
+                alert("Session expirée, merci de vous reconnecter");
+                window.location = "connexion.html?prev=employe.html";
+            }else{
+                alert("Erreur... :(");
+                document.getElementById("a_faire").innerHTML = "Erreur :(";
+            }
+            
         }
     })
     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX

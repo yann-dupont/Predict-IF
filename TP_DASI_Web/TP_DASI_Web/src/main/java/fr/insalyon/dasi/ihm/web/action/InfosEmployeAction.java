@@ -5,6 +5,7 @@
  */
 package fr.insalyon.dasi.ihm.web.action;
 
+import fr.insalyon.dasi.metier.modele.Consultation;
 import fr.insalyon.dasi.metier.modele.Employe;
 import fr.insalyon.dasi.metier.service.Service;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,12 @@ public class InfosEmployeAction extends Action {
         // Gestion de la Session: ici, enregistrer l'ID de l'Employe authentifié
         HttpSession session = request.getSession();
         id = (Long)session.getAttribute("idEmploye");
+        
+        if (id == null){
+            request.setAttribute("success", false);
+            request.setAttribute("cause", "session expiree");
+            return;
+        }
         System.out.println("ID Employe de la session : "+id.toString());
         
         Employe e = s.rechercherEmployeParId(id);
@@ -34,6 +41,11 @@ public class InfosEmployeAction extends Action {
             
             request.setAttribute("employe", e);
             System.out.println("Employe trouve : "+e.toString());
+            
+            Consultation c = s.obtenirConsultationAFaire(e);
+            System.out.println("Consultation a faire : ");
+            System.out.print(c);
+            request.setAttribute("consultation", c);
             
         }else{
             request.setAttribute("success", false);

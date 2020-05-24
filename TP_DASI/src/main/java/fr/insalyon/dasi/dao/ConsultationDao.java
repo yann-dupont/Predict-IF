@@ -34,18 +34,24 @@ public class ConsultationDao {
     
     public List<Consultation> chercherParMedium(Medium medium) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Consultation> query = em.createQuery("SELECT c FROM Consultation c WHERE statut = 1 and c.medium = :medium", Consultation.class); // voir pour les numeros de statut
+        TypedQuery<Consultation> query = em.createQuery("SELECT c FROM Consultation c WHERE statut = 1 and c.medium = :medium", Consultation.class); // statut = 1 : a faire
         query.setParameter("medium", medium.getId()); // correspond au paramètre ":medium" dans la requête
         List<Consultation> consultations = query.getResultList();
         return consultations;
     }
     
-    public List<Consultation> chercherParEmploye(Employe employe) {
+    public Consultation chercherParEmploye(Employe employe) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Consultation> query = em.createQuery("SELECT c FROM Consultation c WHERE statut = 1 and c.employe = :employe", Consultation.class); // voir pour les numeros de statut
+        Consultation consultation;
+        TypedQuery<Consultation> query = em.createQuery("SELECT c FROM Consultation c WHERE statut = 1 and c.employe = :employe", Consultation.class); // statut = 1 : a faire
         query.setParameter("employe", employe.getId()); // correspond au paramètre ":employe" dans la requête
-        List<Consultation> consultations = query.getResultList();
-        return consultations;
+        
+        try{
+            consultation = query.getResultList().get(0);
+        }catch(Exception e){
+            consultation = null;
+        }
+        return consultation;
     }
     
     public List<Consultation> listerConsultations() {

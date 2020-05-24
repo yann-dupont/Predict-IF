@@ -16,6 +16,7 @@ import fr.insalyon.dasi.metier.modele.Cartomancien;
 import fr.insalyon.dasi.metier.modele.Astrologue;
 import fr.insalyon.dasi.metier.modele.Consultation;
 import fr.insalyon.dasi.metier.modele.ProfilAstral;
+import fr.insalyon.dasi.metier.modele.Statut;
 import fr.insalyon.dasi.util.AstroTest;
 import fr.insalyon.dasi.util.Message;
 import java.util.List;
@@ -329,11 +330,9 @@ public class Service {
     }
     
     
-    
-    // TODO
     // cherche un employe pour incarner un medium donné
-    // return true si il y a un employé dispo, et lui envoie une notification
-    // return false si aucun employé correspondant n'est disponible
+    // return consultation si il y a un employé dispo, et lui envoie une notification
+    // return null si aucun employé correspondant n'est disponible
     public Consultation contacterMedium(Medium medium, Client client){
         // trouver le bon employe
         Employe employe = null;
@@ -355,6 +354,8 @@ public class Service {
         
         Consultation consult = new Consultation(employe, client, medium);
         consult.setDateNow();
+        consult.setStatut(Consultation.A_FAIRE);
+        employe.setStatut(Statut.Occ);
         
         // persister consult
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("DASI-PU");
@@ -393,6 +394,41 @@ public class Service {
         return consult;
     }
     
+    public int commencerConsultation(Consultation consult){
+        
+        if(consult.getStatut() != Consultation.A_FAIRE){
+            return -1;
+        }else{
+            consult.setStatut(Consultation.EN_COURS);
+            return 0;
+        }
+    }
+    
+    public int terminerConsultation(Consultation consult, Employe employe){
+        
+        if(consult.getStatut() != Consultation.EN_COURS){
+            return -1;
+        }else{
+            consult.setStatut(Consultation.TERMINEE);
+            employe.setStatut(Statut.Dispo);
+            return 0;
+        }
+    }
+    
+    public Consultation obtenirConsultationAFaire(Employe e){
+        Consultation resultat = null;
+        JpaUtil.creerContextePersistance();
+        try {
+            resultat = consultationDao.chercherParEmploye(e);
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service obtenirConsultationAFaire", ex);
+            resultat = null;
+        } finally {
+            JpaUtil.fermerContextePersistance();
+        }
+        return resultat;
+    }
+    
     public List<String> obtenirPredictions(Client c, int amour, int sante, int travail){
         
         AstroTest astro = new AstroTest();
@@ -403,27 +439,6 @@ public class Service {
             return null;
         }
     }
-    
-    
-    // déplacée comme méthode membre de la classe Client pour plus de cohérence
-    /*public ProfilAstral obtenirPA(Client client){
-        
-        ProfilAstral profil;
-        
-        try{
-            AstroTest astro = new AstroTest();
-            List<String> res = astro.getProfil(client.getPrenom(), client.getDateNaissance());
-
-            profil = new ProfilAstral(res.get(0), res.get(1), res.get(2), res.get(3));
-        }catch(Exception e){
-            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service obtenirPA()", e);
-            profil = null;
-        }
-        
-        return profil;
-    }*/
-    
-    
     
     // inutile ?
     

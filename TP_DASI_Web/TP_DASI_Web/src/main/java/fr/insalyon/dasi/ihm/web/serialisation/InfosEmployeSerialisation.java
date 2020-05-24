@@ -8,6 +8,7 @@ package fr.insalyon.dasi.ihm.web.serialisation;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import fr.insalyon.dasi.metier.modele.Consultation;
 import fr.insalyon.dasi.metier.modele.Employe;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -29,8 +30,17 @@ public class InfosEmployeSerialisation extends Serialisation {
         
         if((Boolean)request.getAttribute("success")){
             Employe e = (Employe)request.getAttribute("employe");
+            System.out.println("Serialisation pour la page de l'employe : "+e.toString());
             container.addProperty("prenom", e.getPrenom());
-            System.out.println("Serialisation de l'employe : "+e.toString());
+        
+            if((Consultation)request.getAttribute("consultation") != null){
+                
+                container.addProperty("a_faire", true);
+            }else{
+                container.addProperty("a_faire", false);
+            }
+        }else{
+            container.addProperty("cause", (String)request.getAttribute("cause"));
         }
         
         response.setContentType("application/json;charset=UTF-8");

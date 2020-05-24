@@ -23,6 +23,10 @@ import javax.persistence.TemporalType;
 @Entity
 public class Consultation {
     
+    public static final int TERMINEE = 0;
+    public static final int A_FAIRE = 1;
+    public static final int EN_COURS = 2;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected Long id;
