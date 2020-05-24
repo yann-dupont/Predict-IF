@@ -112,14 +112,24 @@ public class Service {
         return resultat;
     }
     
-    // return true si la modification s'est bien passée
-    public boolean updateClient(Client client, String nom, String prenom, String mail, String motDePasse, String tel, int jour, int mois, int annee){
-        client.setNom(nom);
-        client.setPrenom(prenom);
-        client.setMail(mail);
-        client.setMotDePasse(motDePasse);
-        client.setTel(tel);
-        client.setDateNaissance(annee, mois, jour);
+    // surcharge avec moins de paramètres
+    public boolean updateClient(Client client, String nom, String prenom, String mail, String tel){
+        JpaUtil.creerContextePersistance();
+        try {
+            JpaUtil.ouvrirTransaction();
+            client = clientDao.modifier(client);
+            client.setNom(nom);
+            client.setPrenom(prenom);
+            client.setMail(mail);
+            client.setTel(tel);
+            JpaUtil.validerTransaction();
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service inscrireClient(client)", ex);
+            JpaUtil.annulerTransaction();
+            return false;
+        } finally {
+            JpaUtil.fermerContextePersistance();
+        }
         return true;
     }
     
