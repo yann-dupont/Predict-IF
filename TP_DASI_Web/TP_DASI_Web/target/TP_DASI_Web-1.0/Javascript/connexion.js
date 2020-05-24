@@ -89,7 +89,7 @@ $(document).ready( function () {
                 
                 var redir = GetURLParameter("prev");
                 console.log("Redir : ", redir);
-                if(redir === null){
+                if(redir === null || redir ===""){
                     window.location = "index.html";  // test -> mettre sur index
                 }else{
                     window.location = redir;
