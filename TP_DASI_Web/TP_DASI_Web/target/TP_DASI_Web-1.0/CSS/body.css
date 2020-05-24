@@ -19,11 +19,8 @@ and open the template in the editor.
 }
 
 body{
-    /*background-color: rgb(209, 213, 224);*/
     background-color: var(--english_red);
     color: var(--raisin_black);
-    /*background-image: url("../Images/papier_peint.jpg");
-    background-repeat: repeat;*/
 }
 
 #contenu{
@@ -34,10 +31,6 @@ body{
     margin : 5em;
 }
 
-#tableMediums{
-    font-family: "Comic Sans MS", cursive, sans-serif;
-    
-}
 
 #tableMediums td{
     padding : 20px;
@@ -49,4 +42,8 @@ body{
 
 #tableMediums tr:nth-child(odd) {
   background-color: var(--chestnut);
+}
+
+#tableMediums a:hover{
+    color: grey;
 }

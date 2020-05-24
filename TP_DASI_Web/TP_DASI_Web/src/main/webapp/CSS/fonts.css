@@ -18,3 +18,19 @@ and open the template in the editor.
     font-family: 'EB Garamond', Times New Roman;
     font-style: italic;
 }
+
+.typeMedium{
+    font-family: 'Roboto', Verdana;
+    font-style: italic;
+}
+
+
+#tableMediums{
+    font-family: 'EB Garamond', cursive, serif; 
+    border-collapse: collapse;
+
+}
+
+#tableMediums tr td:first-child {
+    text-align: center;
+}

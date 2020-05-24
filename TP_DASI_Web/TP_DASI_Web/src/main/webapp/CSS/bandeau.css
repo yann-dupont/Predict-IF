@@ -58,6 +58,11 @@ and open the template in the editor.
     text-align: center;
 }
 
+.bouton:hover{
+    background-color: var(--english_red);
+    border-color: var(--english_red);
+}
+
 #boutonBandeau1 {
     left: 80%;
 }
