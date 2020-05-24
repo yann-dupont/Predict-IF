@@ -43,8 +43,8 @@ public class ConsultationDao {
     public Consultation chercherParEmploye(Employe employe) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
         Consultation consultation;
-        TypedQuery<Consultation> query = em.createQuery("SELECT c FROM Consultation c WHERE statut = 1 and c.employe = :employe", Consultation.class); // statut = 1 : a faire
-        query.setParameter("employe", employe.getId()); // correspond au paramètre ":employe" dans la requête
+        TypedQuery<Consultation> query = em.createQuery("SELECT c FROM Consultation c WHERE c.statut = 1 and c.employe = :employe", Consultation.class); // statut = 1 : a faire
+        query.setParameter("employe", employe);   //.getId()); // correspond au paramètre ":employe" dans la requête
         
         try{
             consultation = query.getResultList().get(0);

@@ -76,6 +76,18 @@ public abstract class Medium {
         this.statut = statut;
     }
     
+    public String getType() {
+        if(this.getClass() == Spirite.class){
+            return "spirite";
+        }else if(this.getClass() == Cartomancien.class){
+            return "cartomancien";
+        }else if(this.getClass() == Astrologue.class){
+            return "astrologue";
+        }else{
+            return "inconnu";
+        }
+    }
+    
     @Override
     public String toString() {
         return  genre + " : id=" + id + ", denom=" + denom + ", presentation=" + presentation + ", statut=" + statut;

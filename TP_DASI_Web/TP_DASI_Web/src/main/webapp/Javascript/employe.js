@@ -33,9 +33,25 @@ $(document)
             }
             
             if(response.a_faire){
-                document.getElementById("a_faire").innerHTML = "Au boulot !";
+                
+                var contenu = "";
+                contenu += "Consultation avec ";
+                contenu += response.consultation.client.prenom;
+                contenu += " ";
+                contenu += response.consultation.client.nom;
+                contenu += " en attente (";
+                contenu += response.consultation.date;
+                contenu += ")";
+                contenu += "<br/>Medium à incarner : ";
+                contenu += response.consultation.medium.denom;
+                contenu += " (";
+                contenu += response.consultation.medium.type;
+                contenu += ")";
+                
+                document.getElementById("a_faire").innerHTML = contenu;
+                
             }else{
-                document.getElementById("a_faire").innerHTML = "Chill B-)";
+                document.getElementById("a_faire").innerHTML = "Aucune consultation en attente";
             }
         }
         else {

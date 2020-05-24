@@ -45,7 +45,9 @@ $(document)
 
                 var medium = response.liste[i];
                 htmlContent += "<tr>";
-                htmlContent += "<td>"+medium.denom+"</td>";
+                htmlContent += "<td>" + medium.denom;
+                htmlContent += "<br/>" + "<span class='typeMedium'>";
+                htmlContent += medium.type + "</span></td>";
                 htmlContent += "<td class='presentation'>"+medium.presentation+"</td>";
                 // htmlContent += "<td><a href='contactMedium.html?id="+ medium.id +"'>Contacter</a></td>";
                 htmlContent += "<td><a onclick='contacterMedium("+ medium.id +")'>Contacter</a></td>";

@@ -5,13 +5,18 @@
  */
 package fr.insalyon.dasi.ihm.web.serialisation;
 
+import java.util.Date;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import fr.insalyon.dasi.metier.modele.Client;
 import fr.insalyon.dasi.metier.modele.Consultation;
 import fr.insalyon.dasi.metier.modele.Employe;
+import fr.insalyon.dasi.metier.modele.Medium;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -33,9 +38,40 @@ public class InfosEmployeSerialisation extends Serialisation {
             System.out.println("Serialisation pour la page de l'employe : "+e.toString());
             container.addProperty("prenom", e.getPrenom());
         
-            if((Consultation)request.getAttribute("consultation") != null){
+            if((Boolean)request.getAttribute("a_faire")){
                 
                 container.addProperty("a_faire", true);
+                
+                JsonObject consultJson = new JsonObject();
+                
+                // infos consultation
+                Consultation consult = (Consultation)request.getAttribute("consultation");
+                consultJson.addProperty("idConsult", consult.getId());
+                // date
+                Date date = (Date)request.getAttribute("date");
+                DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");  
+                String strDate = dateFormat.format(date);       
+                consultJson.addProperty("date", strDate);
+                
+                // infos client
+                Client client = (Client)request.getAttribute("client");
+                JsonObject clientJson = new JsonObject();
+                clientJson.addProperty("id", client.getId());
+                clientJson.addProperty("prenom", client.getPrenom());
+                clientJson.addProperty("nom", client.getNom());
+                
+                // medium
+                JsonObject mediumJson = new JsonObject();
+                Medium medium = (Medium)request.getAttribute("medium");
+                mediumJson.addProperty("id", medium.getId());
+                mediumJson.addProperty("denom", medium.getDenom());
+                mediumJson.addProperty("type", medium.getType());
+                
+                // raccorder
+                consultJson.add("client", clientJson);
+                consultJson.add("medium", mediumJson);
+                container.add("consultation", consultJson);
+                
             }else{
                 container.addProperty("a_faire", false);
             }

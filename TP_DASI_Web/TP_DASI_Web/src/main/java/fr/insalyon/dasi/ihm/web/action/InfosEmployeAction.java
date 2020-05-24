@@ -5,8 +5,10 @@
  */
 package fr.insalyon.dasi.ihm.web.action;
 
+import fr.insalyon.dasi.metier.modele.Client;
 import fr.insalyon.dasi.metier.modele.Consultation;
 import fr.insalyon.dasi.metier.modele.Employe;
+import fr.insalyon.dasi.metier.modele.Medium;
 import fr.insalyon.dasi.metier.service.Service;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -42,13 +44,41 @@ public class InfosEmployeAction extends Action {
             request.setAttribute("employe", e);
             System.out.println("Employe trouve : "+e.toString());
             
-            Consultation c = s.obtenirConsultationAFaire(e);
-            System.out.println("Consultation a faire : ");
-            System.out.print(c);
-            request.setAttribute("consultation", c);
+            Consultation consult = s.obtenirConsultationAFaire(e);
+            
+            if (consult != null){
+
+                request.setAttribute("a_faire", true);
+                
+                System.out.print("Consultation a faire : ");
+                System.out.println(consult);
+                request.setAttribute("consultation", consult);
+                
+                // recup client & medium de la consult
+                Client client = consult.getClient();
+                Medium medium = consult.getMedium();
+                
+                if (client == null){
+                    request.setAttribute("success", false);
+                    request.setAttribute("cause", "client non trouve");
+                }else if (medium == null){
+                    request.setAttribute("success", false);
+                    request.setAttribute("cause", "medium non trouve");
+                }else{
+                    request.setAttribute("client", client);
+                    request.setAttribute("medium", medium);
+                }
+                
+                // date
+                request.setAttribute("date", consult.getDate());
+                
+            }else{  // pas de consult
+                request.setAttribute("a_faire", false);
+            }
             
         }else{
             request.setAttribute("success", false);
+            request.setAttribute("cause", "employe non trouve");
             System.out.println("Employe non trouve pour l'id "+request.getAttribute("id"));
         }
     }
