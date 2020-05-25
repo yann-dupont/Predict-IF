@@ -84,6 +84,8 @@ $(document).ready( function () {
                 var client = response.client;
                 $('#notification').html("Connexion du client " + client.prenom + " " + client.nom + " (ID " + client.id + ")");  // Message pour le paragraphe de notification
                 document.cookie = "user=" + client.id;
+                document.cookie = "position=client";
+                document.cookie = "prenom=" + client.prenom;
                 
                 console.log("Allo ? Le bouton connexion ??");
                 
@@ -127,6 +129,8 @@ $(document).ready( function () {
                     var employe = response.employe;
                     console.log("Connexion de l'employé " + employe.prenom + " " + employe.nom + " (ID " + employe.id + ")");  // Message pour le paragraphe de notification
                     document.cookie = "user=" + employe.id;
+                    document.cookie = "position=employe";
+                    document.cookie = "prenom=" + employe.prenom;
 
                     window.location = "employe.html";
 
