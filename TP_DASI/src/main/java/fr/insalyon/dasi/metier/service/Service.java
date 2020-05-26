@@ -343,18 +343,17 @@ public class Service {
     // cherche un employe pour incarner un medium donné
     // return consultation si il y a un employé dispo, et lui envoie une notification
     // return null si aucun employé correspondant n'est disponible
+    // ---------------- TODO TESTER
     public Consultation contacterMedium(Medium medium, Client client){
         // trouver le bon employe
         Employe employe = null;
-        JpaUtil.creerContextePersistance();
+        
         try {
             employe = employeDao.chercherEmployePourConsultation(medium.getGenre());
             System.out.println("Employé choisi pour la consultation : " + employe.toString());
         } catch (Exception ex) {
-            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service contacterMedium()", ex);
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service contacterMedium() : erreur lors de la recherche d'employe", ex);
             employe = null;
-        } finally {
-            JpaUtil.fermerContextePersistance();
         }
         
         // si aucun employe disponible
@@ -362,29 +361,31 @@ public class Service {
             return null;
         }
         
+        // consultation
         Consultation consult = new Consultation(employe, client, medium);
         consult.setDateNow();
         consult.setStatut(Consultation.A_FAIRE);
+        
+        // employe        
+        employe = employeDao.modifier(employe);
         employe.setStatut(Statut.Occ);
         
-        // persister consult
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("DASI-PU");
-        EntityManager em = emf.createEntityManager();
-        
+        // transaction persistance
+        JpaUtil.creerContextePersistance();
         try {
-            em.getTransaction().begin();
-            em.persist(consult);
-            em.getTransaction().commit();
+            JpaUtil.ouvrirTransaction();
+            // consultation
+            consultationDao.creer(consult);
+            // employe
+            employe = employeDao.modifier(employe);
+            employe.setStatut(Statut.Occ);
+            
+            JpaUtil.validerTransaction();
         } catch (Exception ex) {
-            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service contacterMedium()", ex);
-            try {
-                em.getTransaction().rollback();
-            }
-            catch (IllegalStateException ex2) {
-                // Ignorer cette exception...
-            }
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de la transaction du Service contacterMedium", ex);
+            JpaUtil.annulerTransaction();
         } finally {
-            em.close();
+            JpaUtil.fermerContextePersistance();
         }
         
         // envoyer notif a l'employe
@@ -399,32 +400,77 @@ public class Service {
                 employe.getTel(),
                 message.toString()
             );
-                
         
         return consult;
     }
     
+    // inutile ?
     public int commencerConsultation(Consultation consult){
         
         if(consult.getStatut() != Consultation.A_FAIRE){
+            Logger.getAnonymousLogger().log(Level.WARNING, "Erreur : impossible de commencer une consultation pas a faire");
             return -1;
-        }else{
-            consult.setStatut(Consultation.EN_COURS);
-            return 0;
-        }
-    }
-    
-    public int terminerConsultation(Consultation consult, Employe employe){
         
-        if(consult.getStatut() != Consultation.EN_COURS){
-            return -1;
         }else{
-            consult.setStatut(Consultation.TERMINEE);
-            employe.setStatut(Statut.Dispo);
+                    
+            JpaUtil.creerContextePersistance();
+            try {
+                JpaUtil.ouvrirTransaction();
+                consult = consultationDao.modifier(consult);
+                consult.setStatut(Consultation.EN_COURS);
+                JpaUtil.validerTransaction();
+            } catch (Exception ex) {
+                Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service commencerConsultation", ex);
+                JpaUtil.annulerTransaction();
+                return -1;
+            } finally {
+                JpaUtil.fermerContextePersistance();
+            }
+            
             return 0;
         }
     }
     
+    public int terminerConsultation(Consultation consult, Employe employe, String commentaire){
+        
+        int ret = 0;
+        
+        if(consult.getStatut() != Consultation.A_FAIRE || employe.getStatut() != Statut.Occ){
+            Logger.getAnonymousLogger().log(Level.WARNING, "Erreur : impossible de terminer la consultation : mauvais statut");
+            System.out.println("Erreur : impossible de terminer la consultation : mauvais statut");
+            System.out.print("Statut consult : ");
+            System.out.println(consult.getStatut());
+            System.out.print("Statut employe : ");
+            System.out.println(employe.getStatut());
+            return -1;
+        
+        }else{
+                    
+            JpaUtil.creerContextePersistance();
+            try {
+                JpaUtil.ouvrirTransaction();
+                consult = consultationDao.modifier(consult);
+                consult.setStatut(Consultation.TERMINEE);
+                consult.setCommentaire(commentaire);
+                
+                employe = employeDao.modifier(employe);
+                employe.setStatut(Statut.Dispo);
+                JpaUtil.validerTransaction();
+            } catch (Exception ex) {
+                Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service terminerConsultation", ex);
+                System.out.println("Exception lors de l'appel au Service terminerConsultation");
+                System.err.println(ex);
+                JpaUtil.annulerTransaction();
+                ret = -1;
+            } finally {
+                JpaUtil.fermerContextePersistance();
+            }
+            
+            return ret;
+        }
+    }
+    
+    // persistance inutile ?
     public Consultation obtenirConsultationAFaire(Employe e){
         Consultation resultat = null;
         JpaUtil.creerContextePersistance();

@@ -60,5 +60,9 @@ public class ConsultationDao {
         return query.getResultList();
     }
     
-    // modifier / supprimer  ... 
+    // modifier
+    public Consultation modifier(Consultation consultation) {
+        EntityManager em = JpaUtil.obtenirContextePersistance();
+        return em.merge(consultation);
+    }
 }

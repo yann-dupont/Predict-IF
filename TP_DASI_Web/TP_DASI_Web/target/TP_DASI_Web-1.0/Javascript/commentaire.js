@@ -23,8 +23,8 @@ $(document).ready( function () {
             method: 'POST',
             data: {
                 todo: 'lacherCommentaire',
-                text: comm
-//                id:
+                text: comm,
+                id: getCookie("user")
             },
             dataType: 'json'
         })
@@ -33,17 +33,9 @@ $(document).ready( function () {
             console.log('Response : ',response); // LOG dans Console Javascript
             if (response.success) {
 
-    //            document.cookie = "user=" + response.userId;
                 alert("Commentaire enregistré !");
-
-    //            var redir = GetURLParameter("prev");
-    //            console.log("Redir : ", redir);
-    //            if(redir === null){
-    //                window.location = "index.html";
-    //            }else{
-    //                window.location = redir;
-    //            }
-    //            return;
+                window.location = "employe.html";
+                
             }
             else {
                 alert("Erreur :("); // Message pour le paragraphe de notification

@@ -5,3 +5,10 @@ TP_DASI_Web/TP_DASI_Web/target/TP_DASI_Web-1.0/Tomcat.dpf
 *.class
 TP_DASI_Web/TP_DASI_Web/target/classes/.netbeans_automatic_build
 TP_DASI_Web/TP_DASI_Web/target/test-classes/.netbeans_automatic_build
+*.war
+*.lst
+TP_DASI_Web/TP_DASI_Web/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
+TP_DASI_Web/TP_DASI_Web/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
+TP_DASI_Web/TP_DASI_Web/target/TP_DASI_Web-1.0/WEB-INF/lib/TP_DASI-1.0.jar
+*.lst
+*.war
