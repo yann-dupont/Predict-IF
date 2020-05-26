@@ -31,7 +31,7 @@ public class GetListeMediumsSerialisation extends Serialisation {
             JsonArray liste = new JsonArray();
             
             Medium mediumTemp;
-            for (int i = 0; i < mediums.size(); ++i){           
+            for (int i = 0; i < mediums.size(); ++i){
                 JsonObject jsonMedium = new JsonObject();
                 mediumTemp = mediums.get(i);
                 

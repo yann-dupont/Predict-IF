@@ -8,6 +8,7 @@ package fr.insalyon.dasi.ihm.web.serialisation;
 import java.util.Date;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import fr.insalyon.dasi.metier.modele.Client;
 import fr.insalyon.dasi.metier.modele.Consultation;
@@ -71,6 +72,18 @@ public class InfosEmployeSerialisation extends Serialisation {
                 consultJson.add("client", clientJson);
                 consultJson.add("medium", mediumJson);
                 container.add("consultation", consultJson);
+                
+                // donnees pour les graphiques
+                JsonArray liste = new JsonArray();
+                for(int i=0; i<10; i++){
+                    JsonObject jsonMedium = new JsonObject();
+                    jsonMedium.addProperty("denom", "Medium numero " + i);
+                    jsonMedium.addProperty("nombreConsults", 3*i);
+                    liste.add(jsonMedium);
+                }
+
+                container.add("listeStats", liste);
+                
                 
             }else{
                 container.addProperty("a_faire", false);
