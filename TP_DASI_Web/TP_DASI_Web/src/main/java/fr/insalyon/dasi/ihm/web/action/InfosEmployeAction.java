@@ -10,6 +10,7 @@ import fr.insalyon.dasi.metier.modele.Consultation;
 import fr.insalyon.dasi.metier.modele.Employe;
 import fr.insalyon.dasi.metier.modele.Medium;
 import fr.insalyon.dasi.metier.service.Service;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -75,6 +76,9 @@ public class InfosEmployeAction extends Action {
             }else{  // pas de consult
                 request.setAttribute("a_faire", false);
             }
+            
+            Map<String, Integer> classementMediums = s.obtenirClassementMediums();
+            request.setAttribute("classementMediums", classementMediums);
             
         }else{
             request.setAttribute("success", false);

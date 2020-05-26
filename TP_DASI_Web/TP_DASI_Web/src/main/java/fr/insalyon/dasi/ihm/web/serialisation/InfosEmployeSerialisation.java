@@ -18,6 +18,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -72,22 +75,23 @@ public class InfosEmployeSerialisation extends Serialisation {
                 consultJson.add("client", clientJson);
                 consultJson.add("medium", mediumJson);
                 container.add("consultation", consultJson);
-                
-                // donnees pour les graphiques
-                JsonArray liste = new JsonArray();
-                for(int i=0; i<10; i++){
-                    JsonObject jsonMedium = new JsonObject();
-                    jsonMedium.addProperty("denom", "Medium numero " + i);
-                    jsonMedium.addProperty("nombreConsults", 3*i);
-                    liste.add(jsonMedium);
-                }
-
-                container.add("listeStats", liste);
-                
-                
             }else{
                 container.addProperty("a_faire", false);
             }
+            // donnees pour les graphiques
+            Map<String, Integer> classementMediums = (Map<String, Integer>)request.getAttribute("classementMediums");
+            Set<String> keysMap = classementMediums.keySet();
+            JsonArray liste = new JsonArray();
+            Iterator<String> it = keysMap.iterator();
+            while(it.hasNext()){
+                String denom = it.next();
+                JsonObject jsonMedium = new JsonObject();
+                jsonMedium.addProperty("denom", denom);
+                jsonMedium.addProperty("nombreConsults", classementMediums.get(denom));
+                liste.add(jsonMedium);
+            }
+
+            container.add("listeStats", liste);
         }else{
             container.addProperty("cause", (String)request.getAttribute("cause"));
         }

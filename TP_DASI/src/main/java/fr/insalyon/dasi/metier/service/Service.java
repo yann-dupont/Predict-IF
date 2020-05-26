@@ -15,19 +15,16 @@ import fr.insalyon.dasi.metier.modele.Spirite;
 import fr.insalyon.dasi.metier.modele.Cartomancien;
 import fr.insalyon.dasi.metier.modele.Astrologue;
 import fr.insalyon.dasi.metier.modele.Consultation;
-import fr.insalyon.dasi.metier.modele.ProfilAstral;
 import fr.insalyon.dasi.metier.modele.Statut;
 import fr.insalyon.dasi.util.AstroTest;
 import fr.insalyon.dasi.util.Message;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.io.PrintStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import java.util.Map;
+import java.util.HashMap;
 
 /**
  *
@@ -135,7 +132,33 @@ public class Service {
     
     
     // graphiques : obtenirClassementMediums, ...
-    
+    public Map<String, Integer> obtenirClassementMediums () {
+        Map<String, Integer> resultat = new HashMap<>();
+        JpaUtil.creerContextePersistance();
+        try {
+            
+            
+            List<Medium> listeMediums = mediumDao.listerMediums();
+            List<Consultation> listeConsults = consultationDao.listerConsultations();
+            
+            
+            for(int i=0; i<listeMediums.size(); i++){
+                resultat.put(listeMediums.get(i).getDenom(), 0);
+            }
+            
+            for(int i=0; i<listeConsults.size(); i++){
+                resultat.put( listeConsults.get(i).getMedium().getDenom(), resultat.get( listeConsults.get(i).getMedium().getDenom() ) + 1);
+            }
+            
+            
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service listerMediums()", ex);
+            resultat = null;
+        } finally {
+            JpaUtil.fermerContextePersistance();
+        }
+        return resultat;
+    }
     
     // Employe
     
@@ -434,40 +457,28 @@ public class Service {
     public int terminerConsultation(Consultation consult, Employe employe, String commentaire){
         
         int ret = 0;
-        
-        if(consult.getStatut() != Consultation.A_FAIRE || employe.getStatut() != Statut.Occ){
-            Logger.getAnonymousLogger().log(Level.WARNING, "Erreur : impossible de terminer la consultation : mauvais statut");
-            System.out.println("Erreur : impossible de terminer la consultation : mauvais statut");
-            System.out.print("Statut consult : ");
-            System.out.println(consult.getStatut());
-            System.out.print("Statut employe : ");
-            System.out.println(employe.getStatut());
-            return -1;
-        
-        }else{
-                    
-            JpaUtil.creerContextePersistance();
-            try {
-                JpaUtil.ouvrirTransaction();
-                consult = consultationDao.modifier(consult);
-                consult.setStatut(Consultation.TERMINEE);
-                consult.setCommentaire(commentaire);
-                
-                employe = employeDao.modifier(employe);
-                employe.setStatut(Statut.Dispo);
-                JpaUtil.validerTransaction();
-            } catch (Exception ex) {
-                Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service terminerConsultation", ex);
-                System.out.println("Exception lors de l'appel au Service terminerConsultation");
-                System.err.println(ex);
-                JpaUtil.annulerTransaction();
-                ret = -1;
-            } finally {
-                JpaUtil.fermerContextePersistance();
-            }
             
-            return ret;
+        JpaUtil.creerContextePersistance();
+        try {
+            JpaUtil.ouvrirTransaction();
+            consult = consultationDao.modifier(consult);
+            consult.setStatut(Consultation.TERMINEE);
+            consult.setCommentaire(commentaire);
+
+            employe = employeDao.modifier(employe);
+            employe.setStatut(Statut.Dispo);
+            JpaUtil.validerTransaction();
+        } catch (Exception ex) {
+            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service terminerConsultation", ex);
+            System.out.println("Exception lors de l'appel au Service terminerConsultation");
+            System.err.println(ex);
+            JpaUtil.annulerTransaction();
+            ret = -1;
+        } finally {
+            JpaUtil.fermerContextePersistance();
         }
+
+        return ret;
     }
     
     // persistance inutile ?

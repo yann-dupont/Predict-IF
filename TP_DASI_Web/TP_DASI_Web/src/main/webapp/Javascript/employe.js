@@ -83,7 +83,7 @@ $(document)
             for(let med of response.listeStats) {
                 data.push([med.denom, med.nombreConsults]);
             }
-            drawChart(data);
+            drawChart(data, "Médiums les plus consultés");
         }
         else {
 
