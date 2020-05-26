@@ -46,7 +46,8 @@ $(document)
                 contenu += response.consultation.medium.denom;
                 contenu += " (";
                 contenu += response.consultation.medium.type;
-                contenu += ")";
+                contenu += ")<br/>";
+                contenu += "<a style='font-size:200%;' href='consultation.html' title='Consulter les informations du client avant consultation'>Accéder à la consultation</a>";
                 
                 document.getElementById("a_faire").innerHTML = contenu;
                 

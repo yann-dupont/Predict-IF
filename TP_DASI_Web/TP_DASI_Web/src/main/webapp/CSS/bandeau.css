@@ -52,8 +52,6 @@ and open the template in the editor.
     border-color: var(--melon);
     border-radius: 15px;
     text-decoration: none;
-    position: fixed;
-    top: 30px;
     width: 9%;
     text-align: center;
 }
@@ -65,12 +63,18 @@ and open the template in the editor.
 
 #boutonBandeau1 {
     left: 80%;
+    position: fixed;
+    top: 30px;
 }
 
 #boutonBandeau2 {
     left: 90%;
+    position: fixed;
+    top: 30px;
 }
 
 #boutonDeco {
     left: 90%;
+    position: fixed;
+    top: 30px;
 }
