@@ -388,25 +388,6 @@ public class Service {
             JpaUtil.fermerContextePersistance();
         }
         
-//        EntityManagerFactory emf = Persistence.createEntityManagerFactory("DASI-PU");
-//        EntityManager em = emf.createEntityManager();
-//        
-//        try {
-//            em.getTransaction().begin();
-//            em.persist(consult);
-//            em.getTransaction().commit();
-//        } catch (Exception ex) {
-//            Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service contacterMedium()", ex);
-//            try {
-//                em.getTransaction().rollback();
-//            }
-//            catch (IllegalStateException ex2) {
-//                // Ignorer cette exception...
-//            }
-//        } finally {
-//            em.close();
-//        }
-        
         // envoyer notif a l'employe
         StringWriter message = new StringWriter();
         PrintWriter notificationWriter = new PrintWriter(message);
@@ -423,7 +404,7 @@ public class Service {
         return consult;
     }
     
-    // ---------------- TODO TESTER
+    // inutile ?
     public int commencerConsultation(Consultation consult){
         
         if(consult.getStatut() != Consultation.A_FAIRE){
@@ -450,11 +431,15 @@ public class Service {
         }
     }
     
-    // ---------------- TODO TESTER
     public int terminerConsultation(Consultation consult, Employe employe, String commentaire){
         
         if(consult.getStatut() != Consultation.A_FAIRE || employe.getStatut() != Statut.Occ){
             Logger.getAnonymousLogger().log(Level.WARNING, "Erreur : impossible de terminer la consultation : mauvais statut");
+            System.out.println("Erreur : impossible de terminer la consultation : mauvais statut");
+            System.out.print("Statut consult : ");
+            System.out.println(consult.getStatut());
+            System.out.print("Statut employe : ");
+            System.out.println(employe.getStatut());
             return -1;
         
         }else{
@@ -471,6 +456,8 @@ public class Service {
                 JpaUtil.validerTransaction();
             } catch (Exception ex) {
                 Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service terminerConsultation", ex);
+                System.out.println("Exception lors de l'appel au Service terminerConsultation");
+                System.err.println(ex);
                 JpaUtil.annulerTransaction();
                 return -1;
             } finally {
@@ -481,6 +468,7 @@ public class Service {
         }
     }
     
+    // persistance inutile ?
     public Consultation obtenirConsultationAFaire(Employe e){
         Consultation resultat = null;
         JpaUtil.creerContextePersistance();

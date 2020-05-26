@@ -22,25 +22,29 @@ public class LacherCommentaireAction extends Action {
         
         Service s = new Service();
         
+        request.setAttribute("success", false); // par défaut
+            
         System.out.println(request.getParameter("id"));
         Long employeId = Long.parseLong(request.getParameter("id"));
         Employe emp = s.rechercherEmployeParId(employeId);
         
         if(emp == null){
-            request.setAttribute("success", false);
             return;
         }
         Consultation c = s.obtenirConsultationAFaire(emp);
                 
         if(c == null){
-            request.setAttribute("success", false);
             return;
         }
         
-        s.terminerConsultation(c, emp, request.getParameter("text"));
+        int res = s.terminerConsultation(c, emp, request.getParameter("text"));
         
-        request.setAttribute("success", true);
-        System.out.println("Succès LacherCommentaireAction");
+        if (res == 0){
+            request.setAttribute("success", true);
+            System.out.println("Succès LacherCommentaireAction");
+        }else{
+            System.out.println("Echec LacherCommentaireAction");
+        }
         
     }
     
