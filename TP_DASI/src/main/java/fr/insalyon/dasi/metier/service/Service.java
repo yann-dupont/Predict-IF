@@ -433,6 +433,8 @@ public class Service {
     
     public int terminerConsultation(Consultation consult, Employe employe, String commentaire){
         
+        int ret = 0;
+        
         if(consult.getStatut() != Consultation.A_FAIRE || employe.getStatut() != Statut.Occ){
             Logger.getAnonymousLogger().log(Level.WARNING, "Erreur : impossible de terminer la consultation : mauvais statut");
             System.out.println("Erreur : impossible de terminer la consultation : mauvais statut");
@@ -459,12 +461,12 @@ public class Service {
                 System.out.println("Exception lors de l'appel au Service terminerConsultation");
                 System.err.println(ex);
                 JpaUtil.annulerTransaction();
-                return -1;
+                ret = -1;
             } finally {
                 JpaUtil.fermerContextePersistance();
             }
             
-            return 0;
+            return ret;
         }
     }
     
