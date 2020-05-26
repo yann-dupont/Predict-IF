@@ -26,7 +26,7 @@ public class ConsultationDao {
     
     public List<Consultation> chercherParClient(Client client) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        TypedQuery<Consultation> query = em.createQuery("SELECT c FROM Consultation c WHERE c.statut = 0 and c.client = :client", Consultation.class); // voir pour les numeros de statut
+        TypedQuery<Consultation> query = em.createQuery("SELECT c FROM Consultation c WHERE c.statut = 0 and c.client = :client ORDER BY c.date desc", Consultation.class); // voir pour les numeros de statut
         query.setParameter("client", client); // correspond au paramètre ":client" dans la requête
         List<Consultation> consultations = query.getResultList();
         return consultations;

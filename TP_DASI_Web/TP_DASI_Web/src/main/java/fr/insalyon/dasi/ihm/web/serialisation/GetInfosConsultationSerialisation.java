@@ -50,10 +50,10 @@ public class GetInfosConsultationSerialisation extends Serialisation {
             
             JsonArray liste = new JsonArray();
             Consultation consultTemp;
-            for (int i = 0; i < consults.size(); ++i){           
-                JsonObject jsonConsult = new JsonObject();
+            for (int i = 0; i < consults.size(); ++i){
                 consultTemp = consults.get(i);
                 
+                JsonObject jsonConsult = new JsonObject();
                 jsonConsult.addProperty("date", consultTemp.getDate().toString());
                 Medium medium = consultTemp.getMedium();
                 jsonConsult.addProperty("mediumId", medium.getId());
