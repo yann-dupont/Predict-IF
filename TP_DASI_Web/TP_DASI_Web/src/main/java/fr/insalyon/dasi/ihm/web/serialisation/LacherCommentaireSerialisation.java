@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package fr.insalyon.dasi.ihm.web.serialisation;
 
 import com.google.gson.Gson;
@@ -10,21 +15,17 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author DASI Team
+ * @author emman
  */
-public class InscrireClientSerialisation extends Serialisation {
+public class LacherCommentaireSerialisation extends Serialisation {
 
     @Override
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
         
         JsonObject container = new JsonObject();
         
-        System.out.println("bonjouuur, success = " + request.getAttribute("success"));
         container.addProperty("success", (Boolean)request.getAttribute("success"));
-        if((Boolean)request.getAttribute("success")){
-            container.addProperty("userId", (Long)request.getAttribute("userId"));
-        }
-        
+                
         response.setContentType("application/json;charset=UTF-8");
         PrintWriter out = response.getWriter();
         Gson gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
@@ -32,6 +33,6 @@ public class InscrireClientSerialisation extends Serialisation {
         out.close();
         
         System.out.println("Serialisation effectuee");
+        
     }
-
 }

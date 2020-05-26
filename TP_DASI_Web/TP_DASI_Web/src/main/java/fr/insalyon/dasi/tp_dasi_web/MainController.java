@@ -17,6 +17,7 @@ import fr.insalyon.dasi.ihm.web.action.GetProfilClientAction;
 import fr.insalyon.dasi.ihm.web.action.GetMediumByIdAction;
 import fr.insalyon.dasi.ihm.web.action.InfosEmployeAction;
 import fr.insalyon.dasi.ihm.web.action.InscrireClientAction;
+import fr.insalyon.dasi.ihm.web.action.LacherCommentaireAction;
 import fr.insalyon.dasi.ihm.web.action.ModifierProfilClientAction;
 import fr.insalyon.dasi.ihm.web.serialisation.ConfirmationContactSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.GetInfosConsultationSerialisation;
@@ -26,6 +27,7 @@ import fr.insalyon.dasi.ihm.web.serialisation.ProfilClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.GetProfilClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.InfosEmployeSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.InscrireClientSerialisation;
+import fr.insalyon.dasi.ihm.web.serialisation.LacherCommentaireSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ModifierProfilClientSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ProfilEmployeSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.Serialisation;
@@ -125,6 +127,11 @@ public class MainController extends HttpServlet {
                     System.out.println("getInfosConsultation (controleur)");
                     action = new GetInfosConsultationAction();
                     serialisation = new GetInfosConsultationSerialisation();
+                    break;
+                case "lacherCommentaire":
+                    System.out.println("lacherCommentaire (controleur)");
+                    action = new LacherCommentaireAction();
+                    serialisation = new LacherCommentaireSerialisation();
                     break;
             }
         }
