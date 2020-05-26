@@ -4,6 +4,29 @@
  * and open the template in the editor.
  */
 
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+//google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart(data, titre) {
+    var data1 = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Work', 8],
+        ['Friends', 2],
+        ['Eat', 2],
+        ['TV', 2],
+        ['Gym', 2],
+        ['Sleep', 8]
+    ]);
+
+    // Optional; add a title and set the width and height of the chart
+    var options = {'title': titre, 'width': 750, 'height': 400};
+
+    // Display the chart inside the <div> element with id="piechart"
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    chart.draw(google.visualization.arrayToDataTable(data), options);
+}
 
 $(document)
     
@@ -54,6 +77,13 @@ $(document)
             }else{
                 document.getElementById("a_faire").innerHTML = "Aucune consultation en attente";
             }
+            
+            // graphiques
+            var data = [["medium", "nombre de consultations"]];
+            for(let med of response.listeStats) {
+                data.push([med.denom, med.nombreConsults]);
+            }
+            drawChart(data);
         }
         else {
 
