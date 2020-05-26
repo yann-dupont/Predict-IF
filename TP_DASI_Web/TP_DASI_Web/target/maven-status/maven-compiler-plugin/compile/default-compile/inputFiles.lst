@@ -5,12 +5,14 @@ D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\mai
 D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\action\ModifierProfilClientAction.java
 D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\serialisation\ModifierProfilClientSerialisation.java
 D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\action\InscrireClientAction.java
+D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\serialisation\GetInfosConsultationSerialisation.java
 D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\serialisation\InfosEmployeSerialisation.java
 D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\serialisation\InscrireClientSerialisation.java
 D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\action\GetListeMediumsAction.java
 D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\action\GetProfilClientAction.java
 D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\action\AuthentifierEmployeAction.java
 D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\action\ContacterMediumAction.java
+D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\action\GetInfosConsultationAction.java
 D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\serialisation\GetProfilClientSerialisation.java
 D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\serialisation\GetListeMediumsSerialisation.java
 D:\Logiciels\NetBeans-11.3\Projects\TP_DASI_Emma\TP_DASI_Web\TP_DASI_Web\src\main\java\fr\insalyon\dasi\ihm\web\serialisation\MediumSerialisation.java
