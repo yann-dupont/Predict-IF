@@ -537,6 +537,5 @@ public class Service {
         }
         return resultat;
     }
-
     
 }

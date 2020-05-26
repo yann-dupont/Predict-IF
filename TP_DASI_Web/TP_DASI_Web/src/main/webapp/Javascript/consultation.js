@@ -66,7 +66,7 @@ $(document)
     })
     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
         console.log('Error',error); // LOG dans Console Javascript
-        alert("Erreur lors de l'appel AJAX de getListeMediums");
+        alert("Erreur lors de l'appel AJAX de getInfosConsultation");
     })
     .always( function () { // Fonction toujours appelée
 
