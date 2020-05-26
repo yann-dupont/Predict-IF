@@ -24,6 +24,7 @@ $(document).ready( function () {
             data: {
                 todo: 'lacherCommentaire',
                 text: comm
+//                id:
             },
             dataType: 'json'
         })
