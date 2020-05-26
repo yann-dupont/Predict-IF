@@ -73,4 +73,10 @@ public class EmployeDao {
         return query.getResultList();
     }
     
+    // modifier
+    public Employe modifier(Employe employe) {
+        EntityManager em = JpaUtil.obtenirContextePersistance();
+        return em.merge(employe);
+    }
+    
 }
