@@ -11,14 +11,61 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="CSS/body.css">
         <link rel="stylesheet" type="text/css" href="CSS/bandeau.css">
+        <link rel="stylesheet" type="text/css" href="CSS/profilClient.css">
         <link rel="icon" href="Images/favicon.ico" />
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="Javascript/gestionCookies.js"></script>
         <script src="Javascript/bandeau.js"></script>
         <script src="Javascript/consultation.js"></script>
     </head>
     <body>
-        <div>TODO write content</div>
-        <br/>
-        <a id=boutonDemarrerTerminer class=bouton style='font-size:200%;' onclick="demarrer()" title='Informe le client que vous êtes prêt à commencer'>Démarrer la consultation</a>
+        <header id=menu> </header>
+        <section id="resumeConsult" class='partie'>
+            <br/>
+            <br/>
+            <span id="chargement">Chargement...</span>
+            <br/>
+            <a id=boutonDemarrerTerminer class=bouton style='font-size:200%;' onclick="demarrer()" title='Informe le client que vous êtes prêt à commencer'>Démarrer la consultation</a>
+        </section>
+        
+        <section id="infosClient" class='partie'>
+            <h2 class='titre' style='font-size:400%;'>Profil du client</h2><br/>
+            <table class='tableInfos' style='font-size:200%;'>
+                <tr>
+                    <td>Nom</td>
+                    <td id='clientNom'></td>
+                    <td>Téléphone</td>
+                    <td id='clientTel'></td>
+                </tr>
+                <tr>
+                    <td>Prénom</td>
+                    <td id='clientPrenom'></td>
+                    <td>Adresse mail</td>
+                    <td id='clientMail'></td>
+                </tr>
+                <tr>
+                    <td>Signe du zodiaque</td>
+                    <td id='clientZodiaque'></td>
+                    <td>Couleur porte-bonheur</td>
+                    <td id='clientCouleur'></td>
+                </tr>
+                <tr>
+                    <td>Signe du zodiaque chinois</td>
+                    <td id='clientSgChinois'></td>
+                    <td>Animal-totem</td>
+                    <td id='clientAnimal'></td>
+                </tr>
+            </table>
+        </section>
+        
+        <section id="IfAstroNet" class='partie'>
+            <h2 class='titre' style='font-size:400%;'>Aide IfAstroNet</h2><br/>
+            <a id=boutonIfAstroNet class=bouton style='font-size:200%;' onclick="demanderAide()" title='Obtenir des prédictions selon les notes en amour, santé et travail'>Valider</a>
+        </section>
+        
+        <section id="historique" class='partie'>
+            <h2 class='titre' style='font-size:400%;'>Historique des commentaires sur ce client</h2><br/>
+        </section>
+        
     </body>
 </html>
