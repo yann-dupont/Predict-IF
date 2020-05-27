@@ -35,17 +35,7 @@ $(document).ready( function nomMedium() {
 
     console.log("==========================\n appel à nomMedium (JS)\n=========================="); // LOG dans Console Javascript
     
-    console.log("ID de la requete : "+GetURLParameter('id'));  //
-    var text = "";
-
-    // bail inutile pour vérifier que tout va bien
-    if (navigator.cookieEnabled === true) {
-        text = "Cookies are enabled.";
-    } else {
-        text = "Cookies are not enabled.";
-    }
-    document.getElementById("test").innerHTML = text;
-
+    console.log("ID de la requete : "+GetURLParameter('id'));
 
     // Appel AJAX
     $.ajax({

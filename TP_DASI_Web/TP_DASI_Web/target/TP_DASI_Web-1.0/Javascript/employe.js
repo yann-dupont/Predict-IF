@@ -10,16 +10,6 @@ google.charts.load('current', {'packages':['corechart']});
 
 // Draw the chart and set the chart values
 function drawChart(data, titre) {
-    var data1 = google.visualization.arrayToDataTable([
-        ['Task', 'Hours per Day'],
-        ['Work', 8],
-        ['Friends', 2],
-        ['Eat', 2],
-        ['TV', 2],
-        ['Gym', 2],
-        ['Sleep', 8]
-    ]);
-
     // Optional; add a title and set the width and height of the chart
     var options = {'title': titre, 'width': 750, 'height': 400};
 

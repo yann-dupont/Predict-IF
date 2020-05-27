@@ -13,16 +13,6 @@ $(document)
         function getListeMediums() {
 
     console.log("==========================\nclic sur le bouton 'nos mediums', appel à getListeMediums (JS)\n=========================="); // LOG dans Console Javascript
-    var text = "";
-
-    // bail inutile pour vérifier que tout va bien
-    if (navigator.cookieEnabled === true) {
-        text = "Cookies are enabled.";
-    } else {
-        text = "Cookies are not enabled.";
-    }
-    document.getElementById("demo").innerHTML = text;
-
 
     // Appel AJAX
     $.ajax({
