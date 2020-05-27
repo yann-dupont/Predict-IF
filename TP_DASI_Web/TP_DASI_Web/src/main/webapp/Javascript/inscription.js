@@ -28,7 +28,7 @@ function GetURLParameter(sParam)
 
 function confirmerInscr(){
 
-    console.log("clic sur le bouton de confirmation"); // LOG dans Console Javascript
+//    console.log("clic sur le bouton de confirmation"); // LOG dans Console Javascript
 
     // Récupération de la valeur des champs du formulaire
     var nom = $('#nom').val();
@@ -40,7 +40,7 @@ function confirmerInscr(){
     var mois = $('#ddn').val().substring(5,7);
     var annee = $('#ddn').val().substring(0,4);
 
-    console.log("jour, mois, année : ",jour, mois, annee);
+//    console.log("jour, mois, année : ",jour, mois, annee);
 
     // Appel AJAX pour l'inscription client
     $.ajax({
@@ -60,7 +60,7 @@ function confirmerInscr(){
         dataType: 'json'
     })
     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
-        console.log('Response : ',response); // LOG dans Console Javascript
+//        console.log('Response : ',response); // LOG dans Console Javascript
         if (response.success) {
 
             var date = new Date(); // date actuelle
@@ -68,11 +68,11 @@ function confirmerInscr(){
             document.cookie = "user=" + response.userId + "; expires=" + date;
             document.cookie = "position=client" + "; expires=" + date;
             document.cookie = "prenom=" + prenom + "; expires=" + date;
-            console.log("Inscription reussie !");
+//            console.log("Inscription reussie !");
             alert("Inscription terminée !");
 
             var redir = GetURLParameter("prev");
-            console.log("Redir : ", redir);
+//            console.log("Redir : ", redir);
             if(redir === null){
                 window.location = "index.html";
             }else{
@@ -86,7 +86,7 @@ function confirmerInscr(){
     })
     .fail( function (xhr, status, error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
 
-        console.log(xhr.responseText);
+//        console.log(xhr.responseText);
         alert("Erreur lors de l'appel AJAX");
         document.getElementById("boutonConfirmer").innerHTML = "Erreur :/";
     });

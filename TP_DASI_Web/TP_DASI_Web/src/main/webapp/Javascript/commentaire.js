@@ -14,7 +14,7 @@ $(document).ready( function () {
     $('#confirmer').on( 'click', function () { // Fonction appelée lors du clic sur le bouton
 
         comm = $('#input').val();
-        console.log(comm);
+//        console.log(comm);
         
         
         // Appel AJAX pour l'inscription client
@@ -30,7 +30,7 @@ $(document).ready( function () {
         })
         .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
 
-            console.log('Response : ',response); // LOG dans Console Javascript
+//            console.log('Response : ',response); // LOG dans Console Javascript
             if (response.success) {
 
                 alert("Commentaire enregistré !");
@@ -43,7 +43,7 @@ $(document).ready( function () {
         })
         .fail( function (xhr, status, error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
 
-            console.log(xhr.responseText);
+//            console.log(xhr.responseText);
             alert("Erreur lors de l'appel AJAX");
         });
 

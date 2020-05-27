@@ -374,7 +374,7 @@ public class Service {
         
         try {
             employe = employeDao.chercherEmployePourConsultation(medium.getGenre());
-            System.out.println("Employé choisi pour la consultation : " + employe.toString());
+//            System.out.println("Employé choisi pour la consultation : " + employe.toString());
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service contacterMedium() : erreur lors de la recherche d'employe", ex);
             employe = null;
@@ -461,8 +461,8 @@ public class Service {
             JpaUtil.validerTransaction();
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service terminerConsultation", ex);
-            System.out.println("Exception lors de l'appel au Service terminerConsultation");
-            System.err.println(ex);
+//            System.out.println("Exception lors de l'appel au Service terminerConsultation");
+//            System.err.println(ex);
             JpaUtil.annulerTransaction();
             ret = -1;
         } finally {

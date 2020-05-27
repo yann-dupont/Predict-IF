@@ -19,7 +19,7 @@ public class GetInfosConsultationAction extends Action {
     public void executer(HttpServletRequest request) {
 
         Long userId = Long.parseLong(request.getParameter("userId"));
-        System.out.println("userId : " + userId);
+//        System.out.println("userId : " + userId);
         
         Service service = new Service();
         
@@ -29,8 +29,8 @@ public class GetInfosConsultationAction extends Action {
         Client client = consult.getClient();
         List<Consultation> consults = service.rechercherConsultsParClient(client);
         
-        System.out.println("client : " + client);
-        System.out.println("consults : " + consults);
+//        System.out.println("client : " + client);
+//        System.out.println("consults : " + consults);
 
         request.setAttribute("client", client);
         request.setAttribute("consults", consults);

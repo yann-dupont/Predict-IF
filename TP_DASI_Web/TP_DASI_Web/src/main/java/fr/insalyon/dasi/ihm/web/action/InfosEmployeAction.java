@@ -34,7 +34,7 @@ public class InfosEmployeAction extends Action {
             request.setAttribute("cause", "session expiree");
             return;
         }
-        System.out.println("ID Employe de la session : "+id.toString());
+//        System.out.println("ID Employe de la session : "+id.toString());
         
         Employe e = s.rechercherEmployeParId(id);
         
@@ -42,7 +42,7 @@ public class InfosEmployeAction extends Action {
             request.setAttribute("success", true);
             
             request.setAttribute("employe", e);
-            System.out.println("Employe trouve : "+e.toString());
+//            System.out.println("Employe trouve : "+e.toString());
             
             Consultation consult = s.obtenirConsultationAFaire(e);
             
@@ -50,8 +50,8 @@ public class InfosEmployeAction extends Action {
 
                 request.setAttribute("a_faire", true);
                 
-                System.out.print("Consultation a faire : ");
-                System.out.println(consult);
+//                System.out.print("Consultation a faire : ");
+//                System.out.println(consult);
                 request.setAttribute("consultation", consult);
                 
                 // recup client & medium de la consult
@@ -82,7 +82,7 @@ public class InfosEmployeAction extends Action {
         }else{
             request.setAttribute("success", false);
             request.setAttribute("cause", "employe non trouve");
-            System.out.println("Employe non trouve pour l'id "+request.getAttribute("id"));
+//            System.out.println("Employe non trouve pour l'id "+request.getAttribute("id"));
         }
     }
 }

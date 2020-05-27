@@ -75,7 +75,7 @@ public class EmployeDao {
         //List<Object[]> employes = query.getResultList();
         List<Long> employes = query.getResultList();
         Employe result = null;
-        System.out.println("ID de l'employé trouvé : " + employes.toString());
+//        System.out.println("ID de l'employé trouvé : " + employes.toString());
         if (!employes.isEmpty()) {
             
             result = this.chercherParId(employes.get(0)); // premier de la liste
@@ -92,7 +92,7 @@ public class EmployeDao {
     // modifier
     public Employe modifier(Employe employe) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
-        System.out.println("ganaganagan : " + employe);
+//        System.out.println("ganaganagan : " + employe);
         return em.merge(employe);
     }
     

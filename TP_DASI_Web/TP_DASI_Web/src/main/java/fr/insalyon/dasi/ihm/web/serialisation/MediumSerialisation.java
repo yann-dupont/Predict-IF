@@ -20,7 +20,7 @@ public class MediumSerialisation extends Serialisation {
 
         Medium medium = (Medium)request.getAttribute("medium");
         
-        System.out.println("Sérialisation du medium : "+medium.toString());
+//        System.out.println("Sérialisation du medium : "+medium.toString());
         
         JsonObject container = new JsonObject();
 

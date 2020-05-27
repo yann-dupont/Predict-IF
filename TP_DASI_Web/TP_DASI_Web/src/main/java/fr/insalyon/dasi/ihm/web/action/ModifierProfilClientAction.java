@@ -20,7 +20,7 @@ public class ModifierProfilClientAction extends Action {
     public void executer(HttpServletRequest request) {
         
         Service service = new Service();
-        System.out.println("ID de l'utilisateur de modifier de profil : " + request.getParameter("userId"));
+//        System.out.println("ID de l'utilisateur de modifier de profil : " + request.getParameter("userId"));
         Client client = service.rechercherClientParId(Long.parseLong(request.getParameter("userId")));
         Boolean success = service.updateClient(client, request.getParameter("newNom"), request.getParameter("newPrenom"), request.getParameter("newMail"), request.getParameter("newTel"));
 

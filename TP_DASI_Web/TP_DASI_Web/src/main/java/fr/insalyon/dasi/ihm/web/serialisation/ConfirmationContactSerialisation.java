@@ -18,7 +18,7 @@ public class ConfirmationContactSerialisation extends Serialisation {
     @Override
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        System.out.println("ConfirmationContactSerialisation");
+//        System.out.println("ConfirmationContactSerialisation");
         
         
         JsonObject container = new JsonObject();

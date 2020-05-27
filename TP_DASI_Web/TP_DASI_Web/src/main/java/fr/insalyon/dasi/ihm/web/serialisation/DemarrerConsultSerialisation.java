@@ -22,7 +22,7 @@ public class DemarrerConsultSerialisation extends Serialisation {
     @Override
     public void serialiser(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
-        System.out.println("DemarrerConsultSerialisation");
+//        System.out.println("DemarrerConsultSerialisation");
         
         JsonObject container = new JsonObject();
         container.addProperty("success", (Boolean)request.getAttribute("success"));

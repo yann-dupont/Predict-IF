@@ -11,7 +11,7 @@ $(document)
     .ready(
         function getProfilClient() {
 
-    console.log("==========================\nchargement profil client : getProfilClient (JS)\n=========================="); // LOG dans Console Javascript
+//    console.log("==========================\nchargement profil client : getProfilClient (JS)\n=========================="); // LOG dans Console Javascript
 
     // Appel AJAX
     $.ajax({
@@ -24,10 +24,10 @@ $(document)
         dataType: 'json'
     })
     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
-        console.log('Response',response); // LOG dans Console Javascript
+//        console.log('Response',response); // LOG dans Console Javascript
         if (response.success) {
 
-            console.log("GG WP Json bien recu");
+//            console.log("GG WP Json bien recu");
 
             // informations principales
             document.getElementById("clientNom").innerHTML += response.client.nom;
@@ -68,7 +68,7 @@ $(document)
         }
     })
     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-        console.log('Error',error); // LOG dans Console Javascript
+//        console.log('Error',error); // LOG dans Console Javascript
         alert("Erreur lors de l'appel AJAX de getListeMediums");
     })
     .always( function () { // Fonction toujours appelée
@@ -101,14 +101,14 @@ function validerModif(){
         document.getElementById("boutonModifProfil").setAttribute("onClick", "modeModif()");
         
         var userId = getCookie("user");
-        console.log('ID user : '+userId);
+//        console.log('ID user : '+userId);
         
         if(userId==="")
         {
             window.location = "connexion.html?prev=listeMediums.html";
         }else{  // utilisateur connecté
             // TODO : tester si c'est un employé, si oui refuser
-            console.log("Validation contact");
+//            console.log("Validation contact");
 
             // Appel AJAX
             $.ajax({
@@ -126,28 +126,28 @@ function validerModif(){
                 dataType: 'json'
             })
             .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
-                console.log("Done");
-                console.log("Appel AJAX pour modifier le profil réussi");
-                console.log('Response',response); // LOG dans Console Javascript
+//                console.log("Done");
+//                console.log("Appel AJAX pour modifier le profil réussi");
+//                console.log('Response',response); // LOG dans Console Javascript
 
                 if(response.success){
-                    console.log("Youpi le profil a été modifié");
+//                    console.log("Youpi le profil a été modifié");
                 }else{
                     alert("Désolé, une erreur est survenue...\nRetentez votre chance plus tard !");
                 }
 
             })
             .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-                console.log('Error',error); // LOG dans Console Javascript
+//                console.log('Error',error); // LOG dans Console Javascript
                 alert("Erreur lors de l'appel AJAX de modifierProfil");
             })
             .always( function () { // Fonction toujours appelée
-                console.log("Always");
+//                console.log("Always");
             });            
         }
 
     }else{      // "annuler" dans la boite de dialogue de confirmation
-        console.log("Annulé");
+//        console.log("Annulé");
     }
 }
 

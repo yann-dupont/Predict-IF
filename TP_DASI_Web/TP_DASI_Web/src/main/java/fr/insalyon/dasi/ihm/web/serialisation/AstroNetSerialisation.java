@@ -38,7 +38,7 @@ public class AstroNetSerialisation extends Serialisation {
         gson.toJson(container, out);
         out.close();
         
-        System.out.println("Serialisation effectuee");
+//        System.out.println("Serialisation effectuee");
     }
         
 }

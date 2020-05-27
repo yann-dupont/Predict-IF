@@ -8,7 +8,7 @@ $(document)
     .ready(
         function consultation() {
     
-    console.log("==========================\nchargement page consultation : consultation(JS)\n=========================="); // LOG dans Console Javascript
+//    console.log("==========================\nchargement page consultation : consultation(JS)\n=========================="); // LOG dans Console Javascript
 
     // Appel AJAX
     $.ajax({
@@ -21,10 +21,10 @@ $(document)
         dataType: 'json'
     })
     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
-        console.log('Response',response); // LOG dans Console Javascript
+//        console.log('Response',response); // LOG dans Console Javascript
         if (response.success) {
 
-            console.log("GG WP Json bien recu");
+//            console.log("GG WP Json bien recu");
 
             // informations principales
             document.getElementById("clientNom").innerHTML += response.client.nom;
@@ -65,7 +65,7 @@ $(document)
         }
     })
     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-        console.log('Error',error); // LOG dans Console Javascript
+//        console.log('Error',error); // LOG dans Console Javascript
         alert("Erreur lors de l'appel AJAX de getInfosConsultation");
     })
     .always( function () { // Fonction toujours appelée
@@ -87,15 +87,15 @@ function demarrer() {
         dataType: 'json'
     })
     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
-        console.log('Response',response); // LOG dans Console Javascript
-        if (response.success) {
-            console.log('Succès envoi message'); // LOG dans Console Javascript
-        } else {
-            console.log('Echec envoi message'); // LOG dans Console Javascript
-        }
+//        console.log('Response',response); // LOG dans Console Javascript
+//        if (response.success) {
+//            console.log('Succès envoi message'); // LOG dans Console Javascript
+//        } else {
+//            console.log('Echec envoi message'); // LOG dans Console Javascript
+//        }
     })
     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-        console.log('Error',error); // LOG dans Console Javascript
+//        console.log('Error',error); // LOG dans Console Javascript
         alert("Erreur lors de l'appel AJAX de getInfosConsultation");
     })
     .always( function () { // Fonction toujours appelée
@@ -126,7 +126,7 @@ function demanderAide() {
         dataType: 'json'
     })
     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
-        console.log('Response',response); // LOG dans Console Javascript
+//        console.log('Response',response); // LOG dans Console Javascript
         if (response.success) {
 
             console.log("GG WP Json bien recu");
@@ -144,7 +144,7 @@ function demanderAide() {
         }
     })
     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-        console.log('Error',error); // LOG dans Console Javascript
+//        console.log('Error',error); // LOG dans Console Javascript
         alert("Erreur lors de l'appel AJAX de astronet");
     });
     

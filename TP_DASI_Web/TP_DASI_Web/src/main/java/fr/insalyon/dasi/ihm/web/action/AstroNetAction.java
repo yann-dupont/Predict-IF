@@ -24,7 +24,7 @@ public class AstroNetAction extends Action {
         
         Service s = new Service();
         Long userId = Long.parseLong(request.getParameter("userId"));
-        System.out.println("userId employe : " + userId);
+//        System.out.println("userId employe : " + userId);
         
         Employe employe = s.rechercherEmployeParId(userId);
         Consultation consult = s.obtenirConsultationAFaire(employe);
@@ -34,7 +34,7 @@ public class AstroNetAction extends Action {
         int sante = Integer.parseInt(request.getParameter("sante"));
         int travail = Integer.parseInt(request.getParameter("travail"));
         
-        System.out.println("Amour : " + Integer.toString(amour) + ", sante : " + Integer.toString(sante) + ", travail : " + Integer.toString(travail));
+//        System.out.println("Amour : " + Integer.toString(amour) + ", sante : " + Integer.toString(sante) + ", travail : " + Integer.toString(travail));
         
         List<String> res = s.obtenirPredictions(client, amour, sante, travail);
         

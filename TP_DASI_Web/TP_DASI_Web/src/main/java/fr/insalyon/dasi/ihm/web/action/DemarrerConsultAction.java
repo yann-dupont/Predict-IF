@@ -20,7 +20,7 @@ public class DemarrerConsultAction extends Action {
     
     @Override
     public void executer(HttpServletRequest request){
-        System.out.println("DemarrerConsultAction bien appelé pour l'employe d'id "+request.getParameter("employeId"));
+//        System.out.println("DemarrerConsultAction bien appelé pour l'employe d'id "+request.getParameter("employeId"));
 
         Service s = new Service();
         long idEmploye = Long.parseLong(request.getParameter("employeId"));

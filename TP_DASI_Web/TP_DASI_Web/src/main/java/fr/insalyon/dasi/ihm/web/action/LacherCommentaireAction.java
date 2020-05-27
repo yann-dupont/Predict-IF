@@ -24,16 +24,16 @@ public class LacherCommentaireAction extends Action {
         
         request.setAttribute("success", false); // par défaut
             
-        System.out.println(request.getParameter("id"));
+//        System.out.println(request.getParameter("id"));
         Long employeId = Long.parseLong(request.getParameter("id"));
         Employe emp = s.rechercherEmployeParId(employeId);
-        System.out.println("statut de " + emp.getPrenom() + " : " + emp.getStatut());
+//        System.out.println("statut de " + emp.getPrenom() + " : " + emp.getStatut());
         
         if(emp == null){
             return;
         }
         Consultation c = s.obtenirConsultationAFaire(emp);
-        System.out.println("statut la consult " + c.getId() + " : " + c.getStatut());
+//        System.out.println("statut la consult " + c.getId() + " : " + c.getStatut());
                 
         if(c == null){
             return;
@@ -43,10 +43,11 @@ public class LacherCommentaireAction extends Action {
         
         if (res == 0){
             request.setAttribute("success", true);
-            System.out.println("Succès LacherCommentaireAction");
-        }else{
-            System.out.println("Echec LacherCommentaireAction");
+//            System.out.println("Succès LacherCommentaireAction");
         }
+//        }else{
+//            System.out.println("Echec LacherCommentaireAction");
+//        }
         
     }
     

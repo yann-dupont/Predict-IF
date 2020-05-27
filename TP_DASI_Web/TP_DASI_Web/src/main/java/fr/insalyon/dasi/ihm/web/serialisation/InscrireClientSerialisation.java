@@ -19,7 +19,7 @@ public class InscrireClientSerialisation extends Serialisation {
         
         JsonObject container = new JsonObject();
         
-        System.out.println("bonjouuur, success = " + request.getAttribute("success"));
+//        System.out.println("bonjouuur, success = " + request.getAttribute("success"));
         container.addProperty("success", (Boolean)request.getAttribute("success"));
         if((Boolean)request.getAttribute("success")){
             container.addProperty("userId", (Long)request.getAttribute("userId"));
@@ -31,7 +31,7 @@ public class InscrireClientSerialisation extends Serialisation {
         gson.toJson(container, out);
         out.close();
         
-        System.out.println("Serialisation effectuee");
+//        System.out.println("Serialisation effectuee");
     }
 
 }

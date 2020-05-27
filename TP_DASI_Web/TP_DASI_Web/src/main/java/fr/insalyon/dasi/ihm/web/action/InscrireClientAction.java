@@ -22,7 +22,7 @@ public class InscrireClientAction extends Action {
         int mois = Integer.parseInt(request.getParameter("mois"));
         int annee = Integer.parseInt(request.getParameter("annee"));
         
-        System.out.println("Jour, mois, annee : "+jour+mois+annee);
+//        System.out.println("Jour, mois, annee : "+jour+mois+annee);
 
         Client c = new Client(nom, prenom, mail, password, tel, jour, mois, annee);
         Service service = new Service();
@@ -31,11 +31,11 @@ public class InscrireClientAction extends Action {
         if (res != null) {
             request.setAttribute("success", true);
             request.setAttribute("userId", c.getId());
-            System.out.println("Succès InscrireClientAction");
+//            System.out.println("Succès InscrireClientAction");
         }
         else {
             request.setAttribute("success", false);
-            System.out.println("Echec InscrireClientAction... :'(");
+//            System.out.println("Echec InscrireClientAction... :'(");
         }
     }
     

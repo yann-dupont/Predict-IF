@@ -93,57 +93,57 @@ public class MainController extends HttpServlet {
                     serialisation = new ProfilEmployeSerialisation();
                     break;
                 case "getListeMediums":
-                    System.out.println("getListeMediums (Mein Kontrollherr Muller)");
+//                    System.out.println("getListeMediums (Mein Kontrollherr Muller)");
                     action = new GetListeMediumsAction();
                     serialisation = new GetListeMediumsSerialisation();
                     break;
                 case "getMediumById":
-                    System.out.println("getMediumById (controleur)");
+//                    System.out.println("getMediumById (controleur)");
                     action = new GetMediumByIdAction();
                     serialisation = new MediumSerialisation();
                     break;
                 case "contacterMedium":
-                    System.out.println("contacterMedium (controleur)");
+//                    System.out.println("contacterMedium (controleur)");
                     action = new ContacterMediumAction();
                     serialisation = new ConfirmationContactSerialisation();
                     break;
                 case "getProfilClient":
-                    System.out.println("getProfilClient (controleur)");
+//                    System.out.println("getProfilClient (controleur)");
                     action = new GetProfilClientAction();
                     serialisation = new GetProfilClientSerialisation();
                     break;
                 case "modifierProfilClient":
-                    System.out.println("modifierProfilClient (controleur)");
+//                    System.out.println("modifierProfilClient (controleur)");
                     action = new ModifierProfilClientAction();
                     serialisation = new ModifierProfilClientSerialisation();
                     break;
                 case "inscrireClient":
-                    System.out.println("inscrireClient (controleur)");
+//                    System.out.println("inscrireClient (controleur)");
                     action = new InscrireClientAction();
                     serialisation = new InscrireClientSerialisation();
                     break;
                 case "infosEmploye":
-                    System.out.println("infosEmploye (controleur)");
+//                    System.out.println("infosEmploye (controleur)");
                     action = new InfosEmployeAction();
                     serialisation = new InfosEmployeSerialisation();
                     break;
                 case "getInfosConsultation":
-                    System.out.println("getInfosConsultation (controleur)");
+//                    System.out.println("getInfosConsultation (controleur)");
                     action = new GetInfosConsultationAction();
                     serialisation = new GetInfosConsultationSerialisation();
                     break;
                 case "demarrerConsult":
-                    System.out.println("astroNet (controleur)");
+//                    System.out.println("astroNet (controleur)");
                     action = new DemarrerConsultAction();
                     serialisation = new DemarrerConsultSerialisation();
                     break;
                 case "lacherCommentaire":
-                    System.out.println("lacherCommentaire (controleur)");
+//                    System.out.println("lacherCommentaire (controleur)");
                     action = new LacherCommentaireAction();
                     serialisation = new LacherCommentaireSerialisation();
                     break;
                 case "astroNet":
-                    System.out.println("astroNet (controleur)");
+//                    System.out.println("astroNet (controleur)");
                     action = new AstroNetAction();
                     serialisation = new AstroNetSerialisation();
                     break;

@@ -33,9 +33,9 @@ function GetURLParameter(sParam)
 
 $(document).ready( function nomMedium() {
 
-    console.log("==========================\n appel à nomMedium (JS)\n=========================="); // LOG dans Console Javascript
+//    console.log("==========================\n appel à nomMedium (JS)\n=========================="); // LOG dans Console Javascript
     
-    console.log("ID de la requete : "+GetURLParameter('id'));
+//    console.log("ID de la requete : "+GetURLParameter('id'));
 
     // Appel AJAX
     $.ajax({
@@ -48,18 +48,18 @@ $(document).ready( function nomMedium() {
         dataType: 'json'
     })
     .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
-        console.log('Response',response); // LOG dans Console Javascript
+//        console.log('Response',response); // LOG dans Console Javascript
         if (response.success) {
             
-            console.log("GG WP Json bien recu");
+//            console.log("GG WP Json bien recu");
             
             var htmlContent = response.denom;
 
             //document.getElementsByClassName("nomMedium").innerHTML = response.denom;
-            console.log(document.getElementsByClassName("nomMedium"));
+//            console.log(document.getElementsByClassName("nomMedium"));
             
             for (var tag of document.getElementsByClassName("nomMedium")){
-                console.log(tag);
+//                console.log(tag);
                 tag.innerHTML = response.medium.denom;
             }
             
@@ -69,7 +69,7 @@ $(document).ready( function nomMedium() {
         }
     })
     .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
-        console.log('Erreur ajax nomMedium',error); // LOG dans Console Javascript
+//        console.log('Erreur ajax nomMedium',error); // LOG dans Console Javascript
         alert("Erreur lors de l'appel AJAX de nomMedium");
     });
 }); 

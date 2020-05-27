@@ -39,7 +39,7 @@ public class InfosEmployeSerialisation extends Serialisation {
         
         if((Boolean)request.getAttribute("success")){
             Employe e = (Employe)request.getAttribute("employe");
-            System.out.println("Serialisation pour la page de l'employe : "+e.toString());
+//            System.out.println("Serialisation pour la page de l'employe : "+e.toString());
             container.addProperty("prenom", e.getPrenom());
         
             if((Boolean)request.getAttribute("a_faire")){
