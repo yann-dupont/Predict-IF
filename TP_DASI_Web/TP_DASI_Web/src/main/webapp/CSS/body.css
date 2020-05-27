@@ -47,3 +47,8 @@ body{
 #tableMediums a:hover{
     color: grey;
 }
+
+#aides td{
+    border-style: solid;
+    border-color: grey;
+}
