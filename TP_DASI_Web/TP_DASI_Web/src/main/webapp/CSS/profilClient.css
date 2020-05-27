@@ -83,3 +83,14 @@ body{
     font-family: 'Roboto', Verdana;
     font-style: italic;
 }
+
+input[type=radio] {
+    border: 0px;
+    height: 1em;
+}
+
+#tableMaudit tr:first-child{
+    
+    font-family: 'EB Garamond', Times New Roman;
+    font-style: italic;
+}
