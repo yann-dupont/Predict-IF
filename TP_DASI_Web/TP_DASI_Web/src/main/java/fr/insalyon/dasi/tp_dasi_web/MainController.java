@@ -12,6 +12,7 @@ import fr.insalyon.dasi.ihm.web.action.AstroNetAction;
 import fr.insalyon.dasi.ihm.web.action.AuthentifierClientAction;
 import fr.insalyon.dasi.ihm.web.action.AuthentifierEmployeAction;
 import fr.insalyon.dasi.ihm.web.action.ContacterMediumAction;
+import fr.insalyon.dasi.ihm.web.action.DemarrerConsultAction;
 import fr.insalyon.dasi.ihm.web.action.GetInfosConsultationAction;
 import fr.insalyon.dasi.ihm.web.action.GetListeMediumsAction;
 import fr.insalyon.dasi.ihm.web.action.GetProfilClientAction;
@@ -22,6 +23,7 @@ import fr.insalyon.dasi.ihm.web.action.LacherCommentaireAction;
 import fr.insalyon.dasi.ihm.web.action.ModifierProfilClientAction;
 import fr.insalyon.dasi.ihm.web.serialisation.AstroNetSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ConfirmationContactSerialisation;
+import fr.insalyon.dasi.ihm.web.serialisation.DemarrerConsultSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.GetInfosConsultationSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.GetListeMediumsSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.MediumSerialisation;
@@ -129,6 +131,11 @@ public class MainController extends HttpServlet {
                     System.out.println("getInfosConsultation (controleur)");
                     action = new GetInfosConsultationAction();
                     serialisation = new GetInfosConsultationSerialisation();
+                    break;
+                case "demarrerConsult":
+                    System.out.println("astroNet (controleur)");
+                    action = new DemarrerConsultAction();
+                    serialisation = new DemarrerConsultSerialisation();
                     break;
                 case "lacherCommentaire":
                     System.out.println("lacherCommentaire (controleur)");

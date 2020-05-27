@@ -76,6 +76,31 @@ $(document)
 
 function demarrer() {
     
+    // Appel AJAX
+    $.ajax({
+        url: './MainController',
+        method: 'GET',
+        data: {
+            todo: 'demarrerConsult',
+            employeId: getCookie("user")
+        },
+        dataType: 'json'
+    })
+    .done( function (response) { // Fonction appelée en cas d'appel AJAX réussi
+        console.log('Response',response); // LOG dans Console Javascript
+        if (response.success) {
+            console.log('Succès envoi message'); // LOG dans Console Javascript
+        } else {
+            console.log('Echec envoi message'); // LOG dans Console Javascript
+        }
+    })
+    .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
+        console.log('Error',error); // LOG dans Console Javascript
+        alert("Erreur lors de l'appel AJAX de getInfosConsultation");
+    })
+    .always( function () { // Fonction toujours appelée
+
+    });
     document.getElementById("boutonDemarrerTerminer").innerHTML = "Terminer la consultation";
     document.getElementById("boutonDemarrerTerminer").setAttribute("onClick", "terminer()");
     document.getElementById("IfAstroNet").style.display = "block";

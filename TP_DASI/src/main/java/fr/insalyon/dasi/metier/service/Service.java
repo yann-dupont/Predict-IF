@@ -426,31 +426,23 @@ public class Service {
         return consult;
     }
     
-    // inutile ?
-    public int commencerConsultation(Consultation consult){
+    public Boolean commencerConsultation(Consultation consult){
         
-        if(consult.getStatut() != Consultation.A_FAIRE){
-            Logger.getAnonymousLogger().log(Level.WARNING, "Erreur : impossible de commencer une consultation pas a faire");
-            return -1;
+        // envoyer notif a l'employe
+        StringWriter message = new StringWriter();
+        PrintWriter notificationWriter = new PrintWriter(message);
         
-        }else{
-                    
-            JpaUtil.creerContextePersistance();
-            try {
-                JpaUtil.ouvrirTransaction();
-                consult = consultationDao.modifier(consult);
-                consult.setStatut(Consultation.EN_COURS);
-                JpaUtil.validerTransaction();
-            } catch (Exception ex) {
-                Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service commencerConsultation", ex);
-                JpaUtil.annulerTransaction();
-                return -1;
-            } finally {
-                JpaUtil.fermerContextePersistance();
-            }
-            
-            return 0;
-        }
+        notificationWriter.println("Bonjour " + consult.getClient().getPrenom() + ".");
+        notificationWriter.println(" J’ai bien reçu votre demande de consultation du " + consult.getDate() + ".");
+        notificationWriter.println("Vous pouvez dès à présent me contacter au  " + consult.getEmploye().getTel() + ".");
+        notificationWriter.println("A tout de suite ! Médiumiquement vôtre, " + consult.getMedium().getDenom() + ".");
+
+        Message.envoyerNotification(
+                consult.getClient().getTel(),
+                message.toString()
+            );
+        
+        return true;
     }
     
     public int terminerConsultation(Consultation consult, Employe employe, String commentaire){
