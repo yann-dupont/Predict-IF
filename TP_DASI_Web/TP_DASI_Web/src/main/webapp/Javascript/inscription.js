@@ -63,7 +63,9 @@ function confirmerInscr(){
         console.log('Response : ',response); // LOG dans Console Javascript
         if (response.success) {
 
-            document.cookie = "user=" + response.userId;
+            var date = new Date(); // date actuelle
+            date.setTime(Date.now() + 86400000);
+            document.cookie = "user=" + response.userId + "; expires=" + date;
             console.log("Inscription reussie !");
             alert("Inscription terminée !");
 
