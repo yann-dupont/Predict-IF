@@ -62,6 +62,8 @@ $(document).ready( function () {
         var champPassword = $('#champ-password').val();
         
         var ok = false;
+        var date = new Date(); // date actuelle
+        date.setDays(date.getDays() + 1);
 
         // ------------------------------------------------------------
         // Appel AJAX pour la connexion client
@@ -83,9 +85,9 @@ $(document).ready( function () {
                 // Exemple: Connexion de Ada Lovelace (ID 1)
                 var client = response.client;
                 $('#notification').html("Connexion du client " + client.prenom + " " + client.nom + " (ID " + client.id + ")");  // Message pour le paragraphe de notification
-                document.cookie = "user=" + client.id;
-                document.cookie = "position=client";
-                document.cookie = "prenom=" + client.prenom;
+                document.cookie = "user=" + client.id + "; expires=" + date;
+                document.cookie = "position=client" + "; expires=" + date;
+                document.cookie = "prenom=" + client.prenom + "; expires=" + date;
                 
                 console.log("Allo ? Le bouton connexion ??");
                 
@@ -128,9 +130,9 @@ $(document).ready( function () {
                     // Exemple: Connexion de Ada Lovelace (ID 1)
                     var employe = response.employe;
                     console.log("Connexion de l'employé " + employe.prenom + " " + employe.nom + " (ID " + employe.id + ")");  // Message pour le paragraphe de notification
-                    document.cookie = "user=" + employe.id;
-                    document.cookie = "position=employe";
-                    document.cookie = "prenom=" + employe.prenom;
+                    document.cookie = "user=" + employe.id + "; expires=" + date;
+                    document.cookie = "position=employe" + "; expires=" + date;
+                    document.cookie = "prenom=" + employe.prenom + "; expires=" + date;
 
                     window.location = "employe.html";
 
