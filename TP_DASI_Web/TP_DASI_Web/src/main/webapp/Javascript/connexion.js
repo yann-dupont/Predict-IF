@@ -63,7 +63,7 @@ $(document).ready( function () {
         
         var ok = false;
         var date = new Date(); // date actuelle
-        date.setDays(date.getDays() + 1);
+        date.setTime(Date.now() + 86400000);
 
         // ------------------------------------------------------------
         // Appel AJAX pour la connexion client
