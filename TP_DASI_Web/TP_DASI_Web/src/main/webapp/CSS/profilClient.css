@@ -18,6 +18,8 @@ body{
 
 .titre {
     text-align: center;
+    font-family: 'EB Garamond', Times New Roman;
+    font-style: italic;
 }
 
 .partie{
@@ -27,7 +29,7 @@ body{
 .tableInfos{
     width: 100%;
     text-align: center;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: 'Roboto', Verdana;
 }
 
 .tableInfos td{
@@ -42,13 +44,14 @@ body{
 .tableInfos td:nth-child(odd) {
     /*background-color: var(--chestnut);*/
     text-align: right;
+    font-style: italic;
 }
 
 
 #tableConsults{
     width: 100%;
     text-align: center;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: 'Roboto', Verdana;
 }
 
 #tableConsults td{
@@ -61,4 +64,17 @@ body{
 
 #tableConsults tr:nth-child(odd) {
     background-color: var(--chestnut);
+}
+
+
+#tableMaudit{
+    
+    table-layout: fixed ;
+    width: 100%
+}
+
+#tableMaudit td{
+    
+    padding: 15px;
+    width: 33%
 }

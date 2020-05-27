@@ -46,9 +46,15 @@ body{
 
 #tableMediums a:hover{
     color: grey;
+    background-color: var(--dark_sienna);
 }
 
 #aides td{
     border-style: solid;
     border-color: grey;
 }
+
+.center{
+    text-align: center;
+}
+

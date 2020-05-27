@@ -105,42 +105,12 @@ function demanderAide() {
         if (response.success) {
 
             console.log("GG WP Json bien recu");
-            document.getElementById("aides").style.display = "block";
+            document.getElementById("aides").style.display = "";
             
             document.getElementById("aideAmour").innerHTML = response.amour;
             document.getElementById("aideSante").innerHTML = response.sante;
             document.getElementById("aideTravail").innerHTML = response.travail;
 
-//            // informations principales
-//            document.getElementById("clientNom").innerHTML += response.client.nom;
-//            document.getElementById("clientTel").innerHTML += response.client.tel;
-//            document.getElementById("clientPrenom").innerHTML += response.client.prenom;
-//            document.getElementById("clientMail").innerHTML += response.client.mail;
-//
-//            // profil astral
-//            document.getElementById("clientZodiaque").innerHTML += response.client.zodiaque;
-//            document.getElementById("clientCouleur").innerHTML += response.client.couleur;
-//            document.getElementById("clientSgChinois").innerHTML += response.client.sgChinois;
-//            document.getElementById("clientAnimal").innerHTML += response.client.animal;
-//            
-//            // historique
-//            var htmlContent = "<table id='tableConsults' style='font-size:200%;'>";
-//            for (var i = 0; i < response.consultations.length; i++){
-//
-//                var consult = response.consultations[i];
-//                htmlContent += "<tr>";
-//                htmlContent += "<td>"+consult.mediumNom+"</td>";
-//                htmlContent += "<td class='presentation'>"+consult.date+"</td>";
-//                // htmlContent += "<td><a href='contactMedium.html?id="+ medium.id +"'>Contacter</a></td>";
-//                htmlContent += "<td>"+consult.commentaire+"</td>";
-//                htmlContent += "</tr>";
-//            }
-//
-//            htmlContent += "</table>";
-//
-//            document.getElementById("historique").innerHTML += htmlContent;
-//
-//            document.getElementById("chargement").innerHTML = "";
 
         }
         else {
