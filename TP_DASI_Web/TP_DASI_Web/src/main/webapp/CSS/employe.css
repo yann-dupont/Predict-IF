@@ -8,6 +8,12 @@ and open the template in the editor.
     Author     : Yumahey
 */
 
+.titre {
+    text-align: center;
+    font-family: 'EB Garamond', Times New Roman;
+    font-style: italic;
+}
+
 .bouton {
     background-color: var(--melon);
     border-style: solid;
@@ -22,4 +28,18 @@ and open the template in the editor.
 .bouton:hover{
     background-color: var(--english_red);
     border-color: var(--english_red);
+}
+
+#bienvenue{
+    
+    font-family: 'Roboto', Verdana;
+    font-style: italic;
+    font-weight: lighter;
+    font-size: 2em;
+}
+
+
+#a_faire{
+    font-family: 'Roboto', Verdana;
+    font-style: italic;
 }

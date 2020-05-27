@@ -11,7 +11,7 @@ google.charts.load('current', {'packages':['corechart']});
 // Draw the chart and set the chart values
 function drawChart(data, titre) {
     // Optional; add a title and set the width and height of the chart
-    var options = {'title': titre, 'width': 750, 'height': 400};
+    var options = {'title': titre, 'width': 750, 'height': 400, backgroundColor: 'transparent'};
 
     // Display the chart inside the <div> element with id="piechart"
     var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -60,7 +60,7 @@ $(document)
                 contenu += response.consultation.medium.denom;
                 contenu += " (";
                 contenu += response.consultation.medium.type;
-                contenu += ")<br/>";
+                contenu += ")<br/><br/><br/>";
                 contenu += "<a style='font-size:200%;' href='consultation.html' title='Consulter les informations du client avant consultation'>Accéder à la consultation</a>";
                 
                 document.getElementById("a_faire").innerHTML = contenu;

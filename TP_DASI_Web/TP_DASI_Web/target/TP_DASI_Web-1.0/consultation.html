@@ -62,54 +62,52 @@ and open the template in the editor.
         <section id="IfAstroNet" class='partie' style="display:none;"> 
             <h2 class='titre' style='font-size:400%;'>Aide IfAstroNet</h2><br/>
             
-            <form>
-                <table>
-                    <tr>
-                        <td>
-                            Amour : <br/>
-                            <input type="radio" id="amour1" name="amour" value="1">
-                            <label for="amour1">1</label><br/>
-                            <input type="radio" id="amour2" name="amour" value="2">
-                            <label for="amour2">2</label><br/>
-                            <input type="radio" id="amour3" name="amour" value="3">
-                            <label for="amour3">3</label><br/>
-                            <input type="radio" id="amour4" name="amour" value="4">
-                            <label for="amour4">4</label><br/>
-                        </td>
-                        <td>
-                            Santé : <br/>
-                            <input type="radio" id="sante1" name="sante" value="1">
-                            <label for="sante1">1</label><br/>
-                            <input type="radio" id="sante2" name="sante" value="2">
-                            <label for="sante2">2</label><br/>
-                            <input type="radio" id="sante3" name="sante" value="3">
-                            <label for="sante3">3</label><br/>
-                            <input type="radio" id="sante4" name="sante" value="4">
-                            <label for="sante4">4</label><br/>
-                        </td>
-                        <td>
-                            Travail : <br/>
-                            <input type="radio" id="travail1" name="travail" value="1">
-                            <label for="travail1">1</label><br/>
-                            <input type="radio" id="travail2" name="travail" value="2">
-                            <label for="travail2">2</label><br/>
-                            <input type="radio" id="travail3" name="travail" value="3">
-                            <label for="travail3">3</label><br/>
-                            <input type="radio" id="travail4" name="travail" value="4">
-                            <label for="travail4">4</label><br/>
-                            
-                        </td>
-                    </tr>
-                    <tr id="aides" style="display:none;">
-                        <td id="aideAmour"></td>
-                        <td id="aideSante"></td>
-                        <td id="aideTravail"></td>
-                    </tr>
-                </table>
-                
-                <a id=boutonIfAstroNet class=bouton style='font-size:200%;' onclick="demanderAide()" title='Obtenir des prédictions selon les notes en amour, santé et travail'>Valider</a>
+            <table id='tableMaudit'>
+                <tr>
+                    <td>
+                        Amour : <br/>
+                        <input type="radio" id="amour1" name="amour" value="1">
+                        <label for="amour1">1</label><br/>
+                        <input type="radio" id="amour2" name="amour" value="2">
+                        <label for="amour2">2</label><br/>
+                        <input type="radio" id="amour3" name="amour" value="3">
+                        <label for="amour3">3</label><br/>
+                        <input type="radio" id="amour4" name="amour" value="4">
+                        <label for="amour4">4</label><br/>
+                    </td>
+                    <td>
+                        Santé : <br/>
+                        <input type="radio" id="sante1" name="sante" value="1">
+                        <label for="sante1">1</label><br/>
+                        <input type="radio" id="sante2" name="sante" value="2">
+                        <label for="sante2">2</label><br/>
+                        <input type="radio" id="sante3" name="sante" value="3">
+                        <label for="sante3">3</label><br/>
+                        <input type="radio" id="sante4" name="sante" value="4">
+                        <label for="sante4">4</label><br/>
+                    </td>
+                    <td>
+                        Travail : <br/>
+                        <input type="radio" id="travail1" name="travail" value="1">
+                        <label for="travail1">1</label><br/>
+                        <input type="radio" id="travail2" name="travail" value="2">
+                        <label for="travail2">2</label><br/>
+                        <input type="radio" id="travail3" name="travail" value="3">
+                        <label for="travail3">3</label><br/>
+                        <input type="radio" id="travail4" name="travail" value="4">
+                        <label for="travail4">4</label><br/>
 
-            </form>
+                    </td>
+                </tr>
+                <tr id="aides" style="display:none;">
+                    <td id="aideAmour"></td>
+                    <td id="aideSante"></td>
+                    <td id="aideTravail"></td>
+                </tr>
+            </table>
+
+            <a id=boutonIfAstroNet class=bouton style='font-size:200%;' onclick="demanderAide()" title='Obtenir des prédictions selon les notes en amour, santé et travail'>Valider</a>
+
             
         </section>
         

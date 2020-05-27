@@ -8,6 +8,16 @@ and open the template in the editor.
     Author     : emman
 */
 
+/* palette */
+:root{  
+    
+    --chestnut: rgba(140, 74, 63, 1);
+    --raisin_black: rgba(38, 35, 34, 1);
+    --dark_sienna: rgba(70, 18, 32, 1);
+    --english_red: rgba(178, 58, 72, 1);
+    --melon: rgba(252, 185, 178, 1);
+}
+
 .presentation{
     font-family: 'Roboto', Verdana;
     font-style: italic;
@@ -33,4 +43,41 @@ and open the template in the editor.
 
 #tableMediums tr td:first-child {
     text-align: center;
+}
+
+
+#slogan{
+    font-family: 'EB Garamond', Times New Roman;
+    font-style: italic;
+    font-size: 4em;
+}
+
+
+#intro{
+    font-family: 'Roboto', Verdana;
+    font-style: italic;
+    font-size: 2em;
+}
+
+
+#lienListe{
+    font-family: 'Roboto', Verdana;
+    font-style: normal;
+    font-size: 3em;
+    text-decoration: none;
+    padding: 20px;
+}
+
+#lienListe:link{
+    color: var(--raisin_black);
+}
+
+#lienListe:visited{
+    color: var(--raisin_black);
+}
+
+
+#lienListe:hover{
+    color: var(--raisin_black);
+    background-color: var(--melon);
 }
