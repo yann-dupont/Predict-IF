@@ -30,7 +30,8 @@ $(document)
         url: './MainController',
         method: 'GET',
         data: {
-            todo: 'infosEmploye'
+            todo: 'infosEmploye',
+            id: getCookie("user")
         },
         dataType: 'json'
     })

@@ -26,9 +26,8 @@ public class InfosEmployeAction extends Action {
         Service s = new Service();
         Long id = Long.valueOf(-1);
         
-        // Gestion de la Session: ici, enregistrer l'ID de l'Employe authentifié
-        HttpSession session = request.getSession();
-        id = (Long)session.getAttribute("idEmploye");
+
+        id = Long.parseLong(request.getParameter("id"));
         
         if (id == null){
             request.setAttribute("success", false);
