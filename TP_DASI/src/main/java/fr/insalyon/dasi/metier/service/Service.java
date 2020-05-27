@@ -370,6 +370,7 @@ public class Service {
     public Consultation contacterMedium(Medium medium, Client client){
         // trouver le bon employe
         Employe employe = null;
+        JpaUtil.creerContextePersistance();
         
         try {
             employe = employeDao.chercherEmployePourConsultation(medium.getGenre());
@@ -377,6 +378,8 @@ public class Service {
         } catch (Exception ex) {
             Logger.getAnonymousLogger().log(Level.WARNING, "Exception lors de l'appel au Service contacterMedium() : erreur lors de la recherche d'employe", ex);
             employe = null;
+        } finally {
+            JpaUtil.fermerContextePersistance();
         }
         
         // si aucun employe disponible
@@ -388,10 +391,6 @@ public class Service {
         Consultation consult = new Consultation(employe, client, medium);
         consult.setDateNow();
         consult.setStatut(Consultation.A_FAIRE);
-        
-        // employe        
-        employe = employeDao.modifier(employe);
-        employe.setStatut(Statut.Occ);
         
         // transaction persistance
         JpaUtil.creerContextePersistance();

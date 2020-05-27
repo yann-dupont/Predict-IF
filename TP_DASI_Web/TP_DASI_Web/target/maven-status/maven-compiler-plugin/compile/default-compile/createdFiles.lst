@@ -1,3 +1,4 @@
+fr\insalyon\dasi\ihm\web\action\AstroNetAction.class
 fr\insalyon\dasi\ihm\web\serialisation\MediumSerialisation.class
 fr\insalyon\dasi\ihm\web\serialisation\Serialisation.class
 fr\insalyon\dasi\ihm\web\serialisation\ModifierProfilClientSerialisation.class
@@ -23,3 +24,4 @@ fr\insalyon\dasi\ihm\web\action\InscrireClientAction.class
 fr\insalyon\dasi\ihm\web\serialisation\GetProfilClientSerialisation.class
 fr\insalyon\dasi\ihm\web\action\GetInfosConsultationAction.class
 fr\insalyon\dasi\ihm\web\action\ModifierProfilClientAction.class
+fr\insalyon\dasi\ihm\web\serialisation\AstroNetSerialisation.class

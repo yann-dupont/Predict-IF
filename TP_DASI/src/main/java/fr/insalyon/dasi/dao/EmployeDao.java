@@ -48,14 +48,30 @@ public class EmployeDao {
     // - ayant le moins de consultations sur la dernière semaine
     public Employe chercherEmployePourConsultation(Genre genre) {
         
-        String requeteInfame = "select employe_id from (select employe_id, count(id) as NbConsult from (select {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} diff, c.* from consultation as c where {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} < 7 and {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} >= 0) as recent group by employe_id) as consultParEmp, Employe e where e.ID = consultParEmp.Employe_ID and NbConsult = (select MIN(NbConsult) from (select employe_id, count(*) as NbConsult from (select {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} as diff, c.* from consultation c where {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} < 7 and {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} >= 0) as recent group by employe_id) as oui) and e.STATUT = 0 and e.GENRE = 1 --- fin de la requête infame -- PS : le SQL de Derby est fumant";
+        //String requeteInfame = "select employe_id from (select employe_id, count(id) as NbConsult from (select {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} diff, c.* from consultation as c where {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} < 7 and {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} >= 0) as recent group by employe_id) as consultParEmp, Employe e where e.ID = consultParEmp.Employe_ID and NbConsult = (select MIN(NbConsult) from (select employe_id, count(*) as NbConsult from (select {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} as diff, c.* from consultation c where {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} < 7 and {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} >= 0) as recent group by employe_id) as oui) and e.STATUT = 0 and e.GENRE = 1";
+        String requeteInfame = "select employe_id from (select employe_id, count(id) as NbConsult from (select {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} diff, c.* from consultation as c where {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} < 7 and {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} >= 0 and c.EMPLOYE_ID in (select id from Employe e2 where e2.GENRE = ";
+        if(genre == Genre.H) {
+            requeteInfame += "0";
+        } else {
+            requeteInfame += "1";
+        }
+        requeteInfame += " and e2.STATUT = 0)) as recent group by employe_id) as consultParEmp, Employe e where e.ID = consultParEmp.Employe_ID and NbConsult = (select MIN(NbConsult) from (select employe_id, count(*) as NbConsult from (select {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} as diff, c.* from consultation c where {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} < 7 and {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} >= 0 and c.EMPLOYE_ID in (select id from Employe e2 where e2.GENRE = ";
+        if(genre == Genre.H) {
+            requeteInfame += "0";
+        } else {
+            requeteInfame += "1";
+        }
+        requeteInfame += " and e2.STATUT = 0)) as recent group by employe_id) as oui)";
+        //String requeteInfame = "select e.id, NbConsult from Employe e left join (select employe_id, count(id) as NbConsult from (select {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} diff, c.*from consultation as c where {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} < 7 and {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} >= 0 and c.EMPLOYE_ID in (select id from Employe e2 where e2.GENRE = 0 and e2.STATUT = 0)) as recent group by employe_id) as consultParEmp on e.ID = consultParEmp.Employe_ID  where e.ID = consultParEmp.Employe_ID and NbConsult = (select MIN(NbConsult) from (select employe_id, count(*) as NbConsult from (select {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} as diff, c.* from consultation c where {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} < 7 and {fn timestampdiff(SQL_TSI_DAY, c.date, CURRENT_TIME)} >= 0 and c.EMPLOYE_ID in (select id from Employe e2 where e2.GENRE = 0 and e2.STATUT = 0)) as recent group by employe_id) as oui) and e.STATUT = 0;";
+
         
         EntityManager em = JpaUtil.obtenirContextePersistance();
         //TypedQuery<Employe> query = em.createQuery(requeteInfame, Employe.class);
         Query query = em.createNativeQuery(requeteInfame);
 
-        query.setParameter("genre", genre); // correspond au paramètre ":genre" dans la requête
-        query.setParameter("statut", 0);//Statut.Dispo); // correspond au paramètre ":statut" dans la requête
+        //query.setParameter(1, genre); // correspond au paramètre ":genre" dans la requête
+        //query.setParameter("genre", genre); // correspond au paramètre ":genre" dans la requête
+        //query.setParameter("statut", Statut.Dispo); // correspond au paramètre ":statut" dans la requête
         //List<Object[]> employes = query.getResultList();
         List<Long> employes = query.getResultList();
         Employe result = null;
@@ -76,6 +92,7 @@ public class EmployeDao {
     // modifier
     public Employe modifier(Employe employe) {
         EntityManager em = JpaUtil.obtenirContextePersistance();
+        System.out.println("ganaganagan : " + employe);
         return em.merge(employe);
     }
     

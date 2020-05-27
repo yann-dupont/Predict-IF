@@ -30,6 +30,10 @@ public class ContacterMediumAction extends Action {
         Medium m = s.rechercherMediumParId(idMedium);
         Client c = s.rechercherClientParId(idClient);
         
+        System.out.println("ID Medium : "+ m.getId());
+        System.out.println("nom Client : "+ c.getPrenom());
+        System.out.println("denom Medium : "+ m.getDenom());
+        
         if(m == null || c == null){
             System.out.print("Client ou medium null : ");
             System.out.print(c);
@@ -41,12 +45,13 @@ public class ContacterMediumAction extends Action {
             return;
         }
         
+        
         Consultation consult = s.contacterMedium(m, c);
         
         if(consult == null){
-            System.out.println("Erreur : pas de medium adéquat trouvé par le service contacterMedium");
+            System.out.println("Erreur : pas d'Employe adéquat trouvé par le service contacterMedium");
             request.setAttribute("success", false);
-            request.setAttribute("cause", "plus de medium dispo");
+            request.setAttribute("cause", "plus d'Employe dispo");
         }else{
             request.setAttribute("success", true);
         }
