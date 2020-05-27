@@ -19,3 +19,10 @@ and open the template in the editor.
   text-align: left;
   padding: 0 50px;
 }
+
+
+h1{
+    
+    font-family: 'EB Garamond', Times New Roman;
+    font-style: italic;
+}

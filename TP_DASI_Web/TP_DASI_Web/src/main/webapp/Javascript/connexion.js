@@ -100,9 +100,6 @@ $(document).ready( function () {
                 }
                 ok = true;
             }
-            else {
-                $('#notification').html("Erreur de Connexion"); // Message pour le paragraphe de notification
-            }
         })
         .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
             console.log('Erreur connexion en tant que client',error); // LOG dans Console Javascript
@@ -139,6 +136,7 @@ $(document).ready( function () {
                 }
                 else {
                     console.log("Erreur de connexion");
+                    $('#notification').html("Erreur de connexion"); // Message pour le paragraphe de notification
                 }
             })
             .fail( function (error) { // Fonction appelée en cas d'erreur lors de l'appel AJAX
