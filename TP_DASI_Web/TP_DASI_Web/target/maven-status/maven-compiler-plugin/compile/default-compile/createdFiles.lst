@@ -1,3 +1,4 @@
+fr\insalyon\dasi\ihm\web\action\DemarrerConsultAction.class
 fr\insalyon\dasi\ihm\web\action\AstroNetAction.class
 fr\insalyon\dasi\ihm\web\serialisation\MediumSerialisation.class
 fr\insalyon\dasi\ihm\web\serialisation\Serialisation.class
@@ -5,6 +6,7 @@ fr\insalyon\dasi\ihm\web\serialisation\ModifierProfilClientSerialisation.class
 fr\insalyon\dasi\tp_dasi_web\MainController.class
 fr\insalyon\dasi\ihm\web\serialisation\ProfilClientSerialisation.class
 fr\insalyon\dasi\ihm\web\action\GetMediumByIdAction.class
+fr\insalyon\dasi\ihm\web\serialisation\DemarrerConsultSerialisation.class
 fr\insalyon\dasi\ihm\web\serialisation\LacherCommentaireSerialisation.class
 fr\insalyon\dasi\ihm\web\action\AuthentifierClientAction.class
 fr\insalyon\dasi\ihm\web\action\LacherCommentaireAction.class
