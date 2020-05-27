@@ -66,6 +66,8 @@ function confirmerInscr(){
             var date = new Date(); // date actuelle
             date.setTime(Date.now() + 86400000);
             document.cookie = "user=" + response.userId + "; expires=" + date;
+            document.cookie = "position=client" + "; expires=" + date;
+            document.cookie = "prenom=" + prenom + "; expires=" + date;
             console.log("Inscription reussie !");
             alert("Inscription terminée !");
 
