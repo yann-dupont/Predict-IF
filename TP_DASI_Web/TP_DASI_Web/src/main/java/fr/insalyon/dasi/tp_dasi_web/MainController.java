@@ -8,6 +8,7 @@ package fr.insalyon.dasi.tp_dasi_web;
 import fr.insalyon.dasi.dao.JpaUtil;
 
 import fr.insalyon.dasi.ihm.web.action.Action;
+import fr.insalyon.dasi.ihm.web.action.AstroNetAction;
 import fr.insalyon.dasi.ihm.web.action.AuthentifierClientAction;
 import fr.insalyon.dasi.ihm.web.action.AuthentifierEmployeAction;
 import fr.insalyon.dasi.ihm.web.action.ContacterMediumAction;
@@ -19,6 +20,7 @@ import fr.insalyon.dasi.ihm.web.action.InfosEmployeAction;
 import fr.insalyon.dasi.ihm.web.action.InscrireClientAction;
 import fr.insalyon.dasi.ihm.web.action.LacherCommentaireAction;
 import fr.insalyon.dasi.ihm.web.action.ModifierProfilClientAction;
+import fr.insalyon.dasi.ihm.web.serialisation.AstroNetSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.ConfirmationContactSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.GetInfosConsultationSerialisation;
 import fr.insalyon.dasi.ihm.web.serialisation.GetListeMediumsSerialisation;
@@ -132,6 +134,11 @@ public class MainController extends HttpServlet {
                     System.out.println("lacherCommentaire (controleur)");
                     action = new LacherCommentaireAction();
                     serialisation = new LacherCommentaireSerialisation();
+                    break;
+                case "astroNet":
+                    System.out.println("astroNet (controleur)");
+                    action = new AstroNetAction();
+                    serialisation = new AstroNetSerialisation();
                     break;
             }
         }
