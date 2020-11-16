@@ -132,6 +132,9 @@ function validerModif(){
 
                 if(response.success){
 //                    console.log("Youpi le profil a été modifié");
+                    var date = new Date(); // date actuelle
+                    date.setTime(Date.now() + 86400000);
+                    document.cookie = "prenom=" + newPrenom + "; expires=" + date;
                 }else{
                     alert("Désolé, une erreur est survenue...\nRetentez votre chance plus tard !");
                 }
